@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "sanity:typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate"
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",
@@ -20,7 +21,9 @@
     "radix-ui": "^1.4.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-icons": "^5.6.0",
     "sanity": "^5.26.0",
+    "sanity-plugin-media": "^4.3.0",
     "shadcn": "^4.8.0",
     "styled-components": "^6.4.2",
     "tailwind-merge": "^3.6.0",
