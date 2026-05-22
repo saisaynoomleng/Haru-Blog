@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Haru Blog
 
-## Getting Started
+> "Founded on the principle that fashion is the most immediate language of culture, Haru Blog began as a digital mood board for the modern enthusiast. Today, we have evolved into a comprehensive media platform that bridges the gap between the runway and the everyday, delivering meticulously researched news and trends in beauty, skincare, and global style.”
 
-First, run the development server:
+"Haru Blog is a curated digital destination at the intersection of high fashion and modern lifestyle. We provide an analytical lens on seasonal trends, celebrity culture, and the evolving beauty landscape, empowering the global style community with insight and inspiration.”
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Timeline
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 5/21/2026 => project research
+- 5/22/2026 => project research, project initial setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Tech stack
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js
+- TypeScript
+- Zod(validation)
+- TailwindCSS
+- shadCn
+- Sanity(Content operating system)
+- PostgreSQL w/ Neon DB
+- Drizzle(ORM)
+- clerk(Authentication)
+- Stripe(payment)
+- Vitest, Playwright(Testing)
+- VercelBlob(storage)
+- React Email(Email List)
+- GSAP(animation)
+- Storybook(Design System)
+- React Map GL(map)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Features
 
-## Deploy on Vercel
+### User
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Admin
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
