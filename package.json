@@ -30,6 +30,7 @@
     "@chromatic-com/storybook": "^5.2.1",
     "@storybook/addon-a11y": "10.4.0",
     "@storybook/addon-docs": "10.4.0",
+    "@storybook/addon-themes": "10.4.0",
     "@storybook/addon-vitest": "10.4.0",
     "@storybook/nextjs-vite": "10.4.0",
     "@t3-oss/env-nextjs": "^0.13.11",
