@@ -8,7 +8,7 @@
 ## Project Timeline
 
 - 5/21/2026 => project research
-- 5/22/2026 => project research, project initial setup, design system setup
+- 5/22/2026 => project research, project initial setup, design system setup, CMS setup
 
 ---
 
