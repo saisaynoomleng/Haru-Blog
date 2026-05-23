@@ -241,7 +241,7 @@ export const siteSettingType = defineType({
         }),
         defineField({
           name: 'longitude',
-          title: 'Latitude on Google Map',
+          title: 'Longitude on Google Map',
           description: 'This is required for displaying the Map on the website',
           type: 'number',
           validation: (rule) => rule.required(),
