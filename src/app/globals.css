@@ -112,6 +112,16 @@
   writing-mode: vertical-rl;
 }
 
+@utility bg-black-gradient {
+  background: #fbf6f1;
+  background: linear-gradient(
+    180deg,
+    rgba(251, 246, 241, 0) 0%,
+    rgba(0, 0, 0, 0.83) 76%
+  );
+}
+
+/* keyframes */
 @keyframes marquee {
   from {
     transform: translateX(0);

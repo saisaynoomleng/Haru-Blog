@@ -3,6 +3,7 @@ import { urlFor } from '@/sanity/lib/image';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Media = {
@@ -21,6 +22,75 @@ type BlogCardProps = {
   variant?: 'default' | 'textOnTop';
 };
 
+const Banner = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <p
+      className={twMerge(
+        clsx(
+          'font-semibold bottom-3 px-2 py-1 rounded-2xl border border-brand-success-900 text-brand-success-800 ',
+          className,
+        ),
+      )}
+    >
+      {children}
+    </p>
+  );
+};
+
+const BlogImage = ({
+  imageAlt,
+  imageUrl,
+  className,
+  variant,
+}: {
+  imageUrl: string;
+  imageAlt: string;
+  className?: string;
+  variant: 'default' | 'textOnTop';
+}) => {
+  return variant === 'default' ? (
+    <Image
+      src={urlFor(imageUrl).format('webp').auto('format').url()}
+      alt={imageAlt || ''}
+      className={twMerge(
+        clsx('object-cover rounded-lg relative min-w-full', className),
+      )}
+      width={400}
+      height={400}
+    />
+  ) : (
+    <Image
+      src={urlFor(imageUrl).format('webp').auto('format').url()}
+      alt={imageAlt || ''}
+      className={twMerge(
+        clsx(
+          'object-cover rounded-lg relative min-w-full min-h-full',
+          className,
+        ),
+      )}
+      fill
+    />
+  );
+};
+
+const Marquee = () => {
+  return (
+    <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-brand-success-300 px-2 py-1 rounded-2xl font-semibold uppercase overflow-x-hidden w-30">
+      <div className="flex gap-x-4 animate-marquee">
+        <p className="shrink-0">Read Article</p>
+        <p className="shrink-0">Read Article</p>
+        <p className="shrink-0">Read Article</p>
+      </div>
+    </div>
+  );
+};
+
 const BlogCard = ({
   className,
   media,
@@ -36,31 +106,20 @@ const BlogCard = ({
       {variant === 'default' && (
         <div className="flex flex-col gap-y-3 max-w-100">
           <div className="overflow-hidden relative">
-            <Image
-              src={urlFor(media.imageUrl).format('webp').auto('format').url()}
-              alt={media.imageAlt || ''}
-              className="object-cover rounded-lg relative min-w-full"
-              width={400}
-              height={400}
+            <BlogImage
+              imageUrl={media.imageUrl}
+              imageAlt={media.imageAlt}
+              variant="default"
             />
 
-            <p className="absolute left-2 font-semibold bottom-3 px-2 py-1 border text-neutral-50 rounded-2xl uppercase">
-              {formatTitle(category)}
-            </p>
-            <p className="absolute right-2 font-semibold bottom-3 px-2 py-1 border text-neutral-50 rounded-2xl uppercase">
-              {formatTitle(author)}
-            </p>
-
-            <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-brand-success-300 px-2 py-1 rounded-2xl font-semibold uppercase overflow-x-hidden w-30">
-              <div className="flex gap-x-4 animate-marquee">
-                <p className="shrink-0">Read Article</p>
-                <p className="shrink-0">Read Article</p>
-                <p className="shrink-0">Read Article</p>
-              </div>
-            </div>
+            <Marquee />
           </div>
 
           <div className="flex flex-col gap-y-1 p-2">
+            <div className="flex items-center gap-x-2 text-fs-300">
+              <Banner>{formatTitle(category)}</Banner>
+              <Banner>{formatTitle(author)}</Banner>
+            </div>
             <h4 className="font-semibold capitalize text-fs-500">{title}</h4>
             <p>{excerpt}</p>
           </div>
@@ -68,33 +127,26 @@ const BlogCard = ({
       )}
 
       {variant === 'textOnTop' && (
-        <div className="flex flex-col gap-y-3 justify-end relative min-h-200 text-neutral-50 pb-10">
+        <div className="flex flex-col gap-y-3 justify-end relative min-h-200 text-neutral-50">
           <div className="absolute inset-0 overflow-hidden">
-            <Image
-              src={urlFor(media.imageUrl).format('webp').auto('format').url()}
-              alt={media.imageAlt || ''}
-              className="object-cover rounded-lg relative min-w-full min-h-full"
-              fill
+            <BlogImage
+              variant="textOnTop"
+              imageAlt={media.imageAlt}
+              imageUrl={media.imageUrl}
             />
           </div>
 
-          <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-brand-success-300 text-brand-neutral-950 px-2 py-1 rounded-2xl font-semibold uppercase overflow-x-hidden w-30">
-            <div className="flex gap-x-4 animate-marquee">
-              <p className="shrink-0">Read Article</p>
-              <p className="shrink-0">Read Article</p>
-              <p className="shrink-0">Read Article</p>
-            </div>
-          </div>
+          <Marquee />
 
-          <div className="flex flex-col gap-y-3 p-2 relative">
+          <div className="flex flex-col gap-y-3 p-2 relative bg-black-gradient pb-10 px-10">
             <h4 className="font-semibold capitalize text-fs-700">{title}</h4>
             <div className="flex justify-between items-center">
-              <p className="font-semibold bottom-3 px-2 py-1 border text-neutral-50 rounded-2xl uppercase">
+              <Banner className="text-brand-neutral-50 border-brand-neutral-50">
                 {formatTitle(category)}
-              </p>
-              <p className="font-semibold bottom-3 px-2 py-1 border text-neutral-50 rounded-2xl uppercase">
+              </Banner>
+              <Banner className="text-brand-neutral-50 border-brand-neutral-50">
                 {formatTitle(author)}
-              </p>
+              </Banner>
             </div>
             <p>{excerpt}</p>
           </div>
