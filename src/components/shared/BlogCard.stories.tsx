@@ -33,6 +33,7 @@ const meta = {
       imageAlt: mockBlog.imageAlt,
     },
     href: mockBlog.href,
+    variant: 'default',
   },
   argTypes: {
     title: {
