@@ -25,4 +25,8 @@ export default defineConfig({
     visionTool({ defaultApiVersion: apiVersion }),
     media(),
   ],
+  document: {
+    newDocumentOptions: (prev) =>
+      prev.filter((item) => item.templateId !== 'siteSetting'),
+  },
 });
