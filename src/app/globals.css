@@ -31,29 +31,29 @@
   --color-brand-success-900: #273a32;
   --color-brand-success-950: #13201b;
 
-  --color-warning-50: #fdf8ef;
-  --color-warning-100: #fbf0d9;
-  --color-warning-200: #f6deb2;
-  --color-warning-300: #f2cc8f;
-  --color-warning-400: #e9a44e;
-  --color-warning-500: #e48a2b;
-  --color-warning-600: #d57221;
-  --color-warning-700: #b1581d;
-  --color-warning-800: #8d461f;
-  --color-warning-900: #723b1c;
-  --color-warning-950: #3d1c0d;
+  --color-brand-warning-50: #fdf8ef;
+  --color-brand-warning-100: #fbf0d9;
+  --color-brand-warning-200: #f6deb2;
+  --color-brand-warning-300: #f2cc8f;
+  --color-brand-warning-400: #e9a44e;
+  --color-brand-warning-500: #e48a2b;
+  --color-brand-warning-600: #d57221;
+  --color-brand-warning-700: #b1581d;
+  --color-brand-warning-800: #8d461f;
+  --color-brand-warning-900: #723b1c;
+  --color-brand-warning-950: #3d1c0d;
 
-  --color-error-50: #fdf5f3;
-  --color-error-100: #fbeae5;
-  --color-error-200: #f9d8cf;
-  --color-error-300: #f3bcae;
-  --color-error-400: #eb957e;
-  --color-error-500: #e07a5f;
-  --color-error-600: #ca5738;
-  --color-error-700: #a9462c;
-  --color-error-800: #8d3c27;
-  --color-error-900: #753727;
-  --color-error-950: #3f1a10;
+  --color-brand-error-50: #fdf5f3;
+  --color-brand-error-100: #fbeae5;
+  --color-brand-error-200: #f9d8cf;
+  --color-brand-error-300: #f3bcae;
+  --color-brand-error-400: #eb957e;
+  --color-brand-error-500: #e07a5f;
+  --color-brand-error-600: #ca5738;
+  --color-brand-error-700: #a9462c;
+  --color-brand-error-800: #8d3c27;
+  --color-brand-error-900: #753727;
+  --color-brand-error-950: #3f1a10;
 
   --color-brand-neutral-50: #fafafa;
   --color-brand-neutral-100: #f2f2f2;
@@ -84,6 +84,9 @@
   /* breakpoint */
   --breakpoint-lg: 1000px;
   --breakpiont-md: 760px;
+
+  /* animation */
+  --animate-marquee: marquee 4s linear infinite;
 }
 
 @layer base {
@@ -98,7 +101,7 @@
   h3,
   h4,
   h5 {
-    @apply text-balance leading-none;
+    @apply leading-none;
   }
   p {
     @apply text-pretty;
@@ -107,4 +110,13 @@
 
 @utility writing-vertical {
   writing-mode: vertical-rl;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
