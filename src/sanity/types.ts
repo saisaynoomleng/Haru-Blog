@@ -15,24 +15,108 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: src/sanity/extract.json
-export type Member = {
-  _id: string;
-  _type: 'member';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  slug?: Slug;
-  image?: ImageWithAlt;
-  role?: string;
-  email?: string;
-};
-
 export type SanityImageAssetReference = {
   _ref: string;
   _type: 'reference';
   _weak?: boolean;
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+};
+
+export type Review = {
+  _id: string;
+  _type: 'review';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  username?: string;
+  role?: string;
+  rating?: number;
+  body?: string;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+  reviewedAt?: string;
+};
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop';
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot';
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
+export type SiteSetting = {
+  _id: string;
+  _type: 'siteSetting';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  siteName?: string;
+  primaryLogo?: ImageWithAlt;
+  secondaryLogo?: ImageWithAlt;
+  socialLinks?: Array<
+    {
+      _key: string;
+    } & SocialLink
+  >;
+  navigation?: Array<
+    | {
+        label?: string;
+        href?: string;
+        isButton?: boolean;
+        _type: 'navLink';
+        _key: string;
+      }
+    | {
+        label?: string;
+        dropdownItems?: Array<{
+          label?: string;
+          href?: string;
+          isButton?: boolean;
+          _type: 'dropdownItem';
+          _key: string;
+        }>;
+        _type: 'navDropdown';
+        _key: string;
+      }
+  >;
+  footerDescription?: string;
+  footerColumns?: Array<{
+    title?: string;
+    links?: Array<{
+      label?: string;
+      href?: string;
+      _key: string;
+    }>;
+    _type: 'footerColumn';
+    _key: string;
+  }>;
+  contactInfo?: {
+    address1?: string;
+    address2?: string;
+    zip?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    latitude?: number;
+    longitude?: number;
+    email?: string;
+    phone?: string;
+  };
 };
 
 export type ImageWithAlt = {
@@ -44,28 +128,16 @@ export type ImageWithAlt = {
   alt?: string;
 };
 
-export type Slug = {
-  _type: 'slug';
-  current?: string;
-  source?: string;
-};
-
-export type SocialLink = {
-  _type: 'socialLink';
-  platform?:
-    | 'twitter'
-    | 'facebook'
-    | 'youtube'
-    | 'instagram'
-    | 'linkedin'
-    | 'github';
-  url?: string;
-};
-
-export type Faq = {
-  _type: 'faq';
-  title?: string;
-  body?: string;
+export type UtilityPage = {
+  _id: string;
+  _type: 'utilityPage';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  body?: BlockContent;
+  seo?: Seo;
 };
 
 export type Seo = {
@@ -100,20 +172,144 @@ export type BlockContent = Array<
     } & ImageWithAlt)
 >;
 
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop';
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
+export type Slug = {
+  _type: 'slug';
+  current?: string;
+  source?: string;
 };
 
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot';
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
+export type AuthorReference = {
+  _ref: string;
+  _type: 'reference';
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: 'author';
+};
+
+export type CategoryReference = {
+  _ref: string;
+  _type: 'reference';
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: 'category';
+};
+
+export type Blog = {
+  _id: string;
+  _type: 'blog';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  author?: AuthorReference;
+  category?: CategoryReference;
+  minRead?: number;
+  publishedAt?: string;
+  image?: ImageWithAlt;
+  seo?: Seo;
+  body?: BlockContent;
+  excerpt?: string;
+  isFeatured?: boolean;
+  isMemberOnly?: boolean;
+};
+
+export type Category = {
+  _id: string;
+  _type: 'category';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+};
+
+export type Author = {
+  _id: string;
+  _type: 'author';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  body?: BlockContent;
+  image?: ImageWithAlt;
+  socialLinks?: Array<
+    {
+      _key: string;
+    } & SocialLink
+  >;
+};
+
+export type Membership = {
+  _id: string;
+  _type: 'membership';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  image?: ImageWithAlt;
+  pricePerMonth?: number;
+  body?: BlockContent;
+  features?: Array<string>;
+  isFeatured?: boolean;
+};
+
+export type Faqs = {
+  _id: string;
+  _type: 'faqs';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  faqs?: Array<
+    {
+      _key: string;
+    } & Faq
+  >;
+};
+
+export type OurStory = {
+  _id: string;
+  _type: 'ourStory';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  year?: number;
+  body?: string;
+};
+
+export type Member = {
+  _id: string;
+  _type: 'member';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  image?: ImageWithAlt;
+  role?: string;
+  email?: string;
+};
+
+export type SocialLink = {
+  _type: 'socialLink';
+  platform?:
+    | 'twitter'
+    | 'facebook'
+    | 'youtube'
+    | 'instagram'
+    | 'linkedin'
+    | 'github';
+  url?: string;
+};
+
+export type Faq = {
+  _type: 'faq';
+  title?: string;
+  body?: string;
 };
 
 export type MediaTag = {
@@ -223,16 +419,27 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
-  | Member
   | SanityImageAssetReference
-  | ImageWithAlt
-  | Slug
-  | SocialLink
-  | Faq
-  | Seo
-  | BlockContent
+  | Review
   | SanityImageCrop
   | SanityImageHotspot
+  | SiteSetting
+  | ImageWithAlt
+  | UtilityPage
+  | Seo
+  | BlockContent
+  | Slug
+  | AuthorReference
+  | CategoryReference
+  | Blog
+  | Category
+  | Author
+  | Membership
+  | Faqs
+  | OurStory
+  | Member
+  | SocialLink
+  | Faq
   | MediaTag
   | SanityImagePaletteSwatch
   | SanityImagePalette
@@ -245,10 +452,9 @@ export type AllSanitySchemaTypes =
 
 // Source: src/sanity/lib/queries.ts
 // Variable: MEMBERS_QUERY
-// Query: *[_type == 'member' && defined(slug.current)]| order(_createdAt desc){  name,  "slug": slug.current,  "imageUrl": image.asset->url,  "imageAlt": image.alt,  email,  role}
+// Query: *[_type == 'member' && defined(slug.current)]| order(_createdAt desc){  name,  "imageUrl": image.asset->url,  "imageAlt": image.alt,  email,  role}
 export type MEMBERS_QUERY_RESULT = Array<{
   name: string | null;
-  slug: string | null;
   imageUrl: string | null;
   imageAlt: string | null;
   email: string | null;
@@ -259,6 +465,6 @@ export type MEMBERS_QUERY_RESULT = Array<{
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[_type == \'member\'\n && defined(slug.current)]\n| order(_createdAt desc){\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  email,\n  role\n}': MEMBERS_QUERY_RESULT;
+    '*[_type == \'member\'\n && defined(slug.current)]\n| order(_createdAt desc){\n  name,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  email,\n  role\n}': MEMBERS_QUERY_RESULT;
   }
 }

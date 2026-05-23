@@ -121,6 +121,10 @@
   );
 }
 
+@utility divider {
+  @apply bg-brand-neutral-950/20 w-full h-px my-2;
+}
+
 /* keyframes */
 @keyframes marquee {
   from {
