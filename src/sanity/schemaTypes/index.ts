@@ -14,6 +14,8 @@ import { authorType } from './documents/authorType';
 import { categoryType } from './documents/categoryType';
 import { blogType } from './documents/blogType';
 import { utilityPageType } from './documents/utilityPageType';
+import { siteSettingType } from './documents/siteSetting';
+import { reviewType } from './documents/reviewType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -30,5 +32,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     categoryType,
     blogType,
     utilityPageType,
+    siteSettingType,
+    reviewType,
   ],
 };
