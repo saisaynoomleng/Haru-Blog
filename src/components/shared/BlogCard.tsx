@@ -32,10 +32,7 @@ const Banner = ({
   return (
     <p
       className={twMerge(
-        clsx(
-          'font-semibold bottom-3 px-2 py-1 rounded-2xl border border-brand-success-900 text-brand-success-800 ',
-          className,
-        ),
+        clsx('font-semibold bottom-3 px-2 py-1 rounded-2xl border ', className),
       )}
     >
       {children}
@@ -54,34 +51,31 @@ const BlogImage = ({
   className?: string;
   variant: 'default' | 'textOnTop';
 }) => {
-  return variant === 'default' ? (
-    <Image
-      src={urlFor(imageUrl).format('webp').auto('format').url()}
-      alt={imageAlt || ''}
-      className={twMerge(
-        clsx('object-cover rounded-lg relative min-w-full', className),
-      )}
-      width={400}
-      height={400}
-    />
-  ) : (
+  return (
     <Image
       src={urlFor(imageUrl).format('webp').auto('format').url()}
       alt={imageAlt || ''}
       className={twMerge(
         clsx(
-          'object-cover rounded-lg relative min-w-full min-h-full',
+          'object-cover rounded-lg relative min-w-full',
+          variant === 'textOnTop' && 'min-h-full',
           className,
         ),
       )}
-      fill
+      width={variant === 'default' ? 400 : undefined}
+      height={variant === 'default' ? 400 : undefined}
+      fill={variant === 'textOnTop'}
+      loading="lazy"
     />
   );
 };
 
 const Marquee = () => {
   return (
-    <div className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-brand-success-300 px-2 py-1 rounded-2xl font-semibold uppercase overflow-x-hidden w-30">
+    <div
+      className="hidden group-hover:block absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-brand-success-300 px-2 py-1 rounded-2xl font-semibold uppercase overflow-x-hidden w-32"
+      aria-hidden="true"
+    >
       <div className="flex gap-x-4 animate-marquee">
         <p className="shrink-0">Read Article</p>
         <p className="shrink-0">Read Article</p>

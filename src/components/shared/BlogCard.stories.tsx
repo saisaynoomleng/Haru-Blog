@@ -101,7 +101,6 @@ export default meta;
 type Story = StoryObj<typeof BlogCard>;
 
 export const Default: Story = {
-  render: (args) => <BlogCard {...args} />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -141,7 +140,6 @@ export const TextOnTop: Story = {
   args: {
     variant: 'textOnTop',
   },
-  render: (args) => <BlogCard {...args} />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
