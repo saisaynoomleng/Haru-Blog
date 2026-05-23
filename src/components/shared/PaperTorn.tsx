@@ -7,7 +7,7 @@ type PaperTornProps = {
 };
 
 const MASK_CLASS =
-  '[mask-image:url(/video-mask.png)] [mask-mode:alpha] [mask-position:center] [mask-repeat:no-repeat] [mask-size:100%_100%]';
+  '[mask-image:url(/torn.png)] [mask-mode:alpha] [mask-position:center] [mask-repeat:no-repeat] [mask-size:100%_100%]';
 
 export const PaperTorn = ({ className, children }: PaperTornProps) => {
   return (
