@@ -22,3 +22,14 @@ export const MEMBERSHIPS_QUERY = defineQuery(`*[_type == 'membership'
     "imageAlt": image.alt,
     isFeatured
   }`);
+
+export const FAQs_QUERY = defineQuery(`*[_type == 'faqs'
+ && defined(slug.current)]
+|order(_createdAt desc){
+  name,
+  "slug": slug.current,
+  faqs[]{
+    title,
+    body
+  }
+ }`);
