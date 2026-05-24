@@ -18,6 +18,7 @@ type ProductCardProps = {
   features: string[];
   media: Media;
   isFeatured: boolean;
+  className?: string;
 };
 
 export const ProductCard = ({
@@ -28,6 +29,7 @@ export const ProductCard = ({
   features,
   media,
   isFeatured,
+  className,
 }: ProductCardProps) => {
   return (
     <div
@@ -35,6 +37,7 @@ export const ProductCard = ({
         clsx(
           'flex flex-col p-2 gap-y-2 md:gap-y-4 border rounded-lg max-w-100 group hover:-translate-y-1 transition-all duration-200 ease-in-out pb-5',
           isFeatured && 'border-brand-primary-700 border-2',
+          className,
         ),
       )}
     >

@@ -475,11 +475,24 @@ export type MEMBERSHIPS_QUERY_RESULT = Array<{
   isFeatured: boolean | null;
 }>;
 
+// Source: src/sanity/lib/queries.ts
+// Variable: FAQs_QUERY
+// Query: *[_type == 'faqs' && defined(slug.current)]|order(_createdAt desc){  name,  "slug": slug.current,  faqs[]{    title,    body  } }
+export type FAQsQUERYResult = Array<{
+  name: string | null;
+  slug: string | null;
+  faqs: Array<{
+    title: string | null;
+    body: string | null;
+  }> | null;
+}>;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
     '*[_type == \'member\'\n && defined(slug.current)]\n| order(_createdAt desc){\n  name,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  email,\n  role\n}': MEMBERS_QUERY_RESULT;
     '*[_type == \'membership\'\n && defined(slug.current)]\n  | order(isFeatured desc){\n    name,\n    "slug": slug.current,\n    pricePerMonth,\n    desc,\n    features[],\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    isFeatured\n  }': MEMBERSHIPS_QUERY_RESULT;
+    '*[_type == \'faqs\'\n && defined(slug.current)]\n|order(_createdAt desc){\n  name,\n  "slug": slug.current,\n  faqs[]{\n    title,\n    body\n  }\n }': FAQsQUERYResult;
   }
 }

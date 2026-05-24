@@ -77,6 +77,11 @@ const meta: Meta<typeof ProductCard> = {
       description:
         'Featured Membership Product card will have different border color',
     },
+
+    className: {
+      control: 'text',
+      description: 'Additional TailwindCSS classes',
+    },
   },
 };
 
