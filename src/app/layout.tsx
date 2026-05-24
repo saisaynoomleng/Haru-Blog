@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Arapey, Karla } from 'next/font/google';
 import './globals.css';
+import { SanityLive } from '@/sanity/lib/live';
 
 const arapey = Arapey({
   variable: '--font-arapey',

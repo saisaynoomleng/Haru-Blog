@@ -71,7 +71,7 @@
   --font-sans: var(--font-arapey);
   --font-serif: var(--font-karla);
 
-  --text-fs-1000: 7rem;
+  --text-fs-1000: 12rem;
   --text-fs-900: 4.5rem;
   --text-fs-800: 3rem;
   --text-fs-700: 2.25rem;
@@ -123,6 +123,14 @@
 
 @utility divider {
   @apply bg-brand-neutral-950/20 w-full h-px my-2;
+}
+
+@utility writing-vertical {
+  writing-mode: vertical-rl;
+}
+
+@utility bg-paper-texture {
+  @apply bg-[url('/paper-texture.jpg')] bg-no-repeat bg-cover;
 }
 
 /* keyframes */
