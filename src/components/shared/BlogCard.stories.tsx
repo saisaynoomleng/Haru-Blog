@@ -5,8 +5,7 @@ import { expect, within } from 'storybook/test';
 const mockBlog = {
   author: 'Laura Tarafa',
   category: 'Shopping',
-  excerpt:
-    'Skip the tab overload—these are the best deals worth adding to cart before they sell out.',
+  excerpt: `Just days away, Memorial Day weekend is creeping up fast, which means many of our favorite brands are rolling out serious savings on editor-loved essentials. But with so many deals flooding the internet, it can be hard to know what’s actually worth adding to cart, where the steepest discounts are, and which sales truly deserve your attention. We’ve already rounded up the best Amazon finds, and now we’re spotlighting all the can’t-miss deals from cult-favorite home, fashion, beauty, and lifestyle brands.`,
   imageAlt: 'two girls looking at their phones',
   imageUrl:
     'https://cdn.sanity.io/images/u19h5dbs/production/ccb52ed2b9108409dd9f6c07dc67928bcfa2b662-1120x1120.heif',

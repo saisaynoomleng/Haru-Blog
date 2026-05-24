@@ -26,7 +26,7 @@ export const YouTubeEmbeded = ({
           allowFullScreen
           loading="lazy"
           referrerPolicy="strict-origin-when-cross-origin"
-          className="w-full h-full pointer-events-none border-0 relative"
+          className="w-full h-full pointer-events-none border-0 relative saturate-0"
         />
       </div>
     </div>
