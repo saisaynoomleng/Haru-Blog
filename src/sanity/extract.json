@@ -1412,11 +1412,10 @@
         },
         "optional": true
       },
-      "body": {
+      "desc": {
         "type": "objectAttribute",
         "value": {
-          "type": "inline",
-          "name": "blockContent"
+          "type": "string"
         },
         "optional": true
       },

@@ -41,9 +41,9 @@ export const membershipType = defineType({
       },
     }),
     defineField({
-      name: 'body',
+      name: 'desc',
       title: 'Membership Description',
-      type: 'blockContent',
+      type: 'text',
       validation: (rule) => rule.required(),
     }),
     defineField({
