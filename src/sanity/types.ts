@@ -249,7 +249,7 @@ export type Membership = {
   slug?: Slug;
   image?: ImageWithAlt;
   pricePerMonth?: number;
-  body?: BlockContent;
+  desc?: string;
   features?: Array<string>;
   isFeatured?: boolean;
 };
@@ -461,10 +461,25 @@ export type MEMBERS_QUERY_RESULT = Array<{
   role: string | null;
 }>;
 
+// Source: src/sanity/lib/queries.ts
+// Variable: MEMBERSHIPS_QUERY
+// Query: *[_type == 'membership' && defined(slug.current)]  | order(isFeatured desc){    name,    "slug": slug.current,    pricePerMonth,    desc,    features[],    "imageUrl": image.asset->url,    "imageAlt": image.alt,    isFeatured  }
+export type MEMBERSHIPS_QUERY_RESULT = Array<{
+  name: string | null;
+  slug: string | null;
+  pricePerMonth: number | null;
+  desc: string | null;
+  features: Array<string> | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  isFeatured: boolean | null;
+}>;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
     '*[_type == \'member\'\n && defined(slug.current)]\n| order(_createdAt desc){\n  name,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  email,\n  role\n}': MEMBERS_QUERY_RESULT;
+    '*[_type == \'membership\'\n && defined(slug.current)]\n  | order(isFeatured desc){\n    name,\n    "slug": slug.current,\n    pricePerMonth,\n    desc,\n    features[],\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    isFeatured\n  }': MEMBERSHIPS_QUERY_RESULT;
   }
 }
