@@ -487,6 +487,45 @@ export type FAQsQUERYResult = Array<{
   }> | null;
 }>;
 
+// Source: src/sanity/lib/queries.ts
+// Variable: FOOTER_QUERY
+// Query: *[_type == 'siteSetting'][0]{  footerDescription,  footerColumns[]{    title,    links[]{      label,      href    }  },  contactInfo,  "logoUrl": secondaryLogo.asset->url,  "logoAlt": secondaryLogo.alt,  socialLinks[]{    platform,    url  }}
+export type FOOTER_QUERY_RESULT = {
+  footerDescription: string | null;
+  footerColumns: Array<{
+    title: string | null;
+    links: Array<{
+      label: string | null;
+      href: string | null;
+    }> | null;
+  }> | null;
+  contactInfo: {
+    address1?: string;
+    address2?: string;
+    zip?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    latitude?: number;
+    longitude?: number;
+    email?: string;
+    phone?: string;
+  } | null;
+  logoUrl: string | null;
+  logoAlt: string | null;
+  socialLinks: Array<{
+    platform:
+      | 'facebook'
+      | 'github'
+      | 'instagram'
+      | 'linkedin'
+      | 'twitter'
+      | 'youtube'
+      | null;
+    url: string | null;
+  }> | null;
+} | null;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -494,5 +533,6 @@ declare module '@sanity/client' {
     '*[_type == \'member\'\n && defined(slug.current)]\n| order(_createdAt desc){\n  name,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  email,\n  role\n}': MEMBERS_QUERY_RESULT;
     '*[_type == \'membership\'\n && defined(slug.current)]\n  | order(isFeatured desc){\n    name,\n    "slug": slug.current,\n    pricePerMonth,\n    desc,\n    features[],\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    isFeatured\n  }': MEMBERSHIPS_QUERY_RESULT;
     '*[_type == \'faqs\'\n && defined(slug.current)]\n|order(_createdAt desc){\n  name,\n  "slug": slug.current,\n  faqs[]{\n    title,\n    body\n  }\n }': FAQsQUERYResult;
+    '*[_type == \'siteSetting\'][0]{\n  footerDescription,\n  footerColumns[]{\n    title,\n    links[]{\n      label,\n      href\n    }\n  },\n  contactInfo,\n  "logoUrl": secondaryLogo.asset->url,\n  "logoAlt": secondaryLogo.alt,\n  socialLinks[]{\n    platform,\n    url\n  }\n}': FOOTER_QUERY_RESULT;
   }
 }

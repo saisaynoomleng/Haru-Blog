@@ -33,3 +33,21 @@ export const FAQs_QUERY = defineQuery(`*[_type == 'faqs'
     body
   }
  }`);
+
+export const FOOTER_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
+  footerDescription,
+  footerColumns[]{
+    title,
+    links[]{
+      label,
+      href
+    }
+  },
+  contactInfo,
+  "logoUrl": secondaryLogo.asset->url,
+  "logoAlt": secondaryLogo.alt,
+  socialLinks[]{
+    platform,
+    url
+  }
+}`);
