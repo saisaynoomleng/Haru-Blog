@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Arapey, Karla } from 'next/font/google';
 import './globals.css';
-import { SanityLive } from '@/sanity/lib/live';
+import { ClerkProvider } from '@clerk/nextjs';
 
 const arapey = Arapey({
   variable: '--font-arapey',
@@ -34,7 +34,9 @@ export default function RootLayout({
       lang="en"
       className={`${arapey.variable} ${karla.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <ClerkProvider>
+        <body className="min-h-full flex flex-col">{children}</body>
+      </ClerkProvider>
     </html>
   );
 }
