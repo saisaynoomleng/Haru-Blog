@@ -9,13 +9,19 @@
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "sanity:typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate"
+    "sanity:typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate",
+    "db:push": "drizzle-kit push",
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "@sanity/client": "^7.22.0",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.26.0",
     "class-variance-authority": "^0.7.1",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
     "lucide-react": "^1.16.0",
     "next": "16.2.6",
     "next-sanity": "^13.0.3",
@@ -48,6 +54,7 @@
     "@vitest/coverage-v8": "^4.1.7",
     "babel-plugin-react-compiler": "1.0.0",
     "clsx": "^2.1.1",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "eslint-plugin-storybook": "10.4.0",
