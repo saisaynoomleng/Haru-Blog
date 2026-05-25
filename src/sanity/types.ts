@@ -526,6 +526,74 @@ export type FOOTER_QUERY_RESULT = {
   }> | null;
 } | null;
 
+// Source: src/sanity/lib/queries.ts
+// Variable: AUTHORS_QUERY
+// Query: *[_type == 'author' && defined(slug.current)] | order(name desc) {  name,  "slug": slug.current,  "imageUrl": image.asset->url,  "imageAlt": image.alt,  }
+export type AUTHORS_QUERY_RESULT = Array<{
+  name: string | null;
+  slug: string | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+}>;
+
+// Source: src/sanity/lib/queries.ts
+// Variable: AUTHOR_QUERY
+// Query: *[_type == 'author' && slug.current == $slug][0] {  name,  "slug": slug.current,  "imageUrl": image.asset->url,  "imageAlt": image.alt,    body,   socialLinks[],   "blogs": *[_type == 'blog'               && defined(slug.current)              && references(^._id)]              |order(publishedAt desc){                name,                "slug": slug.current,                "imageUrl": image.asset->url,                "imageAlt": image.alt,                "author": author->name,                "cateogry": category->name,                excerpt,              } }
+export type AUTHOR_QUERY_RESULT = {
+  name: string | null;
+  slug: string | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  body: BlockContent | null;
+  socialLinks: Array<
+    {
+      _key: string;
+    } & SocialLink
+  > | null;
+  blogs: Array<{
+    name: string | null;
+    slug: string | null;
+    imageUrl: string | null;
+    imageAlt: string | null;
+    author: string | null;
+    cateogry: string | null;
+    excerpt: string | null;
+  }>;
+} | null;
+
+// Source: src/sanity/lib/queries.ts
+// Variable: BLOGS_QUERY
+// Query: *[_type == 'blog'   && defined(slug.current)]  |order(publishedAt desc){    name,    "slug": slug.current,    "imageUrl": image.asset->url,    "imageAlt": image.alt,    "author": author->name,    "cateogry": category->name,    excerpt,}
+export type BLOGS_QUERY_RESULT = Array<{
+  name: string | null;
+  slug: string | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  author: string | null;
+  cateogry: string | null;
+  excerpt: string | null;
+}>;
+
+// Source: src/sanity/lib/queries.ts
+// Variable: UTILITY_PAGE_QUERY
+// Query: *[_type == 'utilityPage' && slug.current == $slug][0]{  name,  body,  "seo": {    "title": coalesce(seo.metaTitle, ""),    "description": coalesce(seo.metaDescription),    "noIndex" : seo.noIndex == true  } }
+export type UTILITY_PAGE_QUERY_RESULT = {
+  name: string | null;
+  body: BlockContent | null;
+  seo: {
+    title: string | '';
+    description: string | null;
+    noIndex: boolean | false;
+  };
+} | null;
+
+// Source: src/sanity/lib/queries.ts
+// Variable: UTILITY_PAGES_QUERY
+// Query: *[_type == 'utilityPage'  && defined(slug.current)]{    "slug": slug.current  }
+export type UTILITY_PAGES_QUERY_RESULT = Array<{
+  slug: string | null;
+}>;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -534,5 +602,10 @@ declare module '@sanity/client' {
     '*[_type == \'membership\'\n && defined(slug.current)]\n  | order(isFeatured desc){\n    name,\n    "slug": slug.current,\n    pricePerMonth,\n    desc,\n    features[],\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    isFeatured\n  }': MEMBERSHIPS_QUERY_RESULT;
     '*[_type == \'faqs\'\n && defined(slug.current)]\n|order(_createdAt desc){\n  name,\n  "slug": slug.current,\n  faqs[]{\n    title,\n    body\n  }\n }': FAQsQUERYResult;
     '*[_type == \'siteSetting\'][0]{\n  footerDescription,\n  footerColumns[]{\n    title,\n    links[]{\n      label,\n      href\n    }\n  },\n  contactInfo,\n  "logoUrl": secondaryLogo.asset->url,\n  "logoAlt": secondaryLogo.alt,\n  socialLinks[]{\n    platform,\n    url\n  }\n}': FOOTER_QUERY_RESULT;
+    '*[_type == \'author\'\n && defined(slug.current)]\n | order(name desc)\n {\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt, \n }': AUTHORS_QUERY_RESULT;
+    '*[_type == \'author\'\n && slug.current == $slug][0]\n {\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt, \n   body,\n   socialLinks[],\n   "blogs": *[_type == \'blog\' \n              && defined(slug.current)\n              && references(^._id)]\n              |order(publishedAt desc){\n                name,\n                "slug": slug.current,\n                "imageUrl": image.asset->url,\n                "imageAlt": image.alt,\n                "author": author->name,\n                "cateogry": category->name,\n                excerpt,\n              }\n }': AUTHOR_QUERY_RESULT;
+    '*[_type == \'blog\' \n  && defined(slug.current)]\n  |order(publishedAt desc){\n    name,\n    "slug": slug.current,\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    "author": author->name,\n    "cateogry": category->name,\n    excerpt,\n}': BLOGS_QUERY_RESULT;
+    '*[_type == \'utilityPage\'\n && slug.current == $slug][0]{\n  name,\n  body,\n  "seo": {\n    "title": coalesce(seo.metaTitle, ""),\n    "description": coalesce(seo.metaDescription),\n    "noIndex" : seo.noIndex == true\n  }\n }': UTILITY_PAGE_QUERY_RESULT;
+    '*[_type == \'utilityPage\'\n  && defined(slug.current)]{\n    "slug": slug.current\n  }': UTILITY_PAGES_QUERY_RESULT;
   }
 }

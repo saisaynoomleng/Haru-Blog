@@ -143,12 +143,12 @@ export const blogType = defineType({
   ],
   orderings: [
     {
-      title: 'Order By Featured',
+      title: 'Featured',
       name: 'featuredDesc',
       by: [{ field: 'isFeatured', direction: 'desc' }],
     },
     {
-      title: 'Order By Published Date',
+      title: 'Published Date',
       name: 'publishedDesc',
       by: [{ field: 'publishedAt', direction: 'desc' }],
     },

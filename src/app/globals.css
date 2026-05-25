@@ -83,7 +83,7 @@
 
   /* breakpoint */
   --breakpoint-lg: 1000px;
-  --breakpiont-md: 760px;
+  --breakpoint-md: 760px;
 
   /* animation */
   --animate-marquee: marquee 4s linear infinite;

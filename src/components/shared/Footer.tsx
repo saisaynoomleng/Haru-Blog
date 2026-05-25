@@ -4,24 +4,7 @@ import { FOOTER_QUERY } from '@/sanity/lib/queries';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import { JSX } from 'react';
-import {
-  BsFacebook,
-  BsGithub,
-  BsInstagram,
-  BsLinkedin,
-  BsTwitterX,
-  BsYoutube,
-} from 'react-icons/bs';
-
-const SOCIAL_ICONS: Record<string, JSX.Element> = {
-  twitter: <BsTwitterX />,
-  facebook: <BsFacebook />,
-  youtube: <BsYoutube />,
-  instagram: <BsInstagram />,
-  linkedin: <BsLinkedin />,
-  github: <BsGithub />,
-};
+import { socialIcons } from '@/lib/dataLayer';
 
 const Footer = async () => {
   const { data: footer } = await sanityFetch({ query: FOOTER_QUERY });
@@ -69,7 +52,7 @@ const Footer = async () => {
                     <li key={link.label}>
                       <Link
                         href={link.href as string}
-                        className="hover:underline text-brand-neutral-50/70"
+                        className="hover:underline text-brand-neutral-50/70 decoration-brand-primary-400"
                       >
                         {link.label}
                       </Link>
@@ -103,9 +86,9 @@ const Footer = async () => {
               <li key={link.url}>
                 <Link
                   href={link.url as string}
-                  className="hover:text-brand-neutral-50 text-brand-neutral-50/70"
+                  className="hover:text-brand-primary-400 text-brand-neutral-50/70"
                 >
-                  {SOCIAL_ICONS[link.platform as string]}
+                  {socialIcons[link.platform as string]}
                 </Link>
               </li>
             ))}
