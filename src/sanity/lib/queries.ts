@@ -51,3 +51,48 @@ export const FOOTER_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
     url
   }
 }`);
+
+export const AUTHORS_QUERY = defineQuery(`*[_type == 'author'
+ && defined(slug.current)]
+ | order(name desc)
+ {
+  name,
+  "slug": slug.current,
+  "imageUrl": image.asset->url,
+  "imageAlt": image.alt, 
+ }`);
+
+export const AUTHOR_QUERY = defineQuery(`*[_type == 'author'
+ && slug.current == $slug][0]
+ {
+  name,
+  "slug": slug.current,
+  "imageUrl": image.asset->url,
+  "imageAlt": image.alt, 
+   body,
+   socialLinks[],
+   "blogs": *[_type == 'blog' 
+              && defined(slug.current)
+              && references(^._id)]
+              |order(publishedAt desc){
+                name,
+                "slug": slug.current,
+                "imageUrl": image.asset->url,
+                "imageAlt": image.alt,
+                "author": author->name,
+                "cateogry": category->name,
+                excerpt,
+              }
+ }`);
+
+export const BLOGS_QUERY = defineQuery(`*[_type == 'blog' 
+  && defined(slug.current)]
+  |order(publishedAt desc){
+    name,
+    "slug": slug.current,
+    "imageUrl": image.asset->url,
+    "imageAlt": image.alt,
+    "author": author->name,
+    "cateogry": category->name,
+    excerpt,
+}`);
