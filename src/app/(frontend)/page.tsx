@@ -2,6 +2,7 @@ import Bounded from '@/components/shared/Bounded';
 import { Hero } from '@/components/shared/Hero';
 import { PaperTorn } from '@/components/shared/PaperTorn';
 import { YouTubeEmbeded } from '@/components/shared/YouTubeEmbeded';
+import { SignInButton } from '@clerk/nextjs';
 
 const mockBlog = {
   author: 'Laura Tarafa',
@@ -30,6 +31,7 @@ export default function Home() {
         scrollIndicator
       />
       <YouTubeEmbeded videoId="5NGyXTsg77E" title="lasdf" />
+      <SignInButton />
     </Bounded>
   );
 }
