@@ -52,7 +52,7 @@ const Footer = async () => {
                     <li key={link.label}>
                       <Link
                         href={link.href as string}
-                        className="hover:underline text-brand-neutral-50/70"
+                        className="hover:underline text-brand-neutral-50/70 decoration-brand-primary-400"
                       >
                         {link.label}
                       </Link>
@@ -86,7 +86,7 @@ const Footer = async () => {
               <li key={link.url}>
                 <Link
                   href={link.url as string}
-                  className="hover:text-brand-neutral-50 text-brand-neutral-50/70"
+                  className="hover:text-brand-primary-400 text-brand-neutral-50/70"
                 >
                   {socialIcons[link.platform as string]}
                 </Link>

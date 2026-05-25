@@ -1,4 +1,3 @@
-import { socialIcons } from '@/lib/dataLayer';
 import { urlFor } from '@/sanity/lib/image';
 import clsx from 'clsx';
 import Image from 'next/image';

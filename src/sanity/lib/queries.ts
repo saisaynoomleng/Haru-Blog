@@ -96,3 +96,19 @@ export const BLOGS_QUERY = defineQuery(`*[_type == 'blog'
     "cateogry": category->name,
     excerpt,
 }`);
+
+export const UTILITY_PAGE_QUERY = defineQuery(`*[_type == 'utilityPage'
+ && slug.current == $slug][0]{
+  name,
+  body,
+  "seo": {
+    "title": coalesce(seo.metaTitle, ""),
+    "description": coalesce(seo.metaDescription),
+    "noIndex" : seo.noIndex == true
+  }
+ }`);
+
+export const UTILITY_PAGES_QUERY = defineQuery(`*[_type == 'utilityPage'
+  && defined(slug.current)]{
+    "slug": slug.current
+  }`);

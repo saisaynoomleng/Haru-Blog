@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { FAQs } from './FAQs';
-import { expect, getByTestId, within } from 'storybook/test';
+import { expect, within } from 'storybook/test';
 
 const mockFAQ = {
   name: 'Digital Lookbooks & Interactive Features',

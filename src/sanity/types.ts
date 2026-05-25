@@ -574,6 +574,26 @@ export type BLOGS_QUERY_RESULT = Array<{
   excerpt: string | null;
 }>;
 
+// Source: src/sanity/lib/queries.ts
+// Variable: UTILITY_PAGE_QUERY
+// Query: *[_type == 'utilityPage' && slug.current == $slug][0]{  name,  body,  "seo": {    "title": coalesce(seo.metaTitle, ""),    "description": coalesce(seo.metaDescription),    "noIndex" : seo.noIndex == true  } }
+export type UTILITY_PAGE_QUERY_RESULT = {
+  name: string | null;
+  body: BlockContent | null;
+  seo: {
+    title: string | '';
+    description: string | null;
+    noIndex: boolean | false;
+  };
+} | null;
+
+// Source: src/sanity/lib/queries.ts
+// Variable: UTILITY_PAGES_QUERY
+// Query: *[_type == 'utilityPage'  && defined(slug.current)]{    "slug": slug.current  }
+export type UTILITY_PAGES_QUERY_RESULT = Array<{
+  slug: string | null;
+}>;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -585,5 +605,7 @@ declare module '@sanity/client' {
     '*[_type == \'author\'\n && defined(slug.current)]\n | order(name desc)\n {\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt, \n }': AUTHORS_QUERY_RESULT;
     '*[_type == \'author\'\n && slug.current == $slug][0]\n {\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt, \n   body,\n   socialLinks[],\n   "blogs": *[_type == \'blog\' \n              && defined(slug.current)\n              && references(^._id)]\n              |order(publishedAt desc){\n                name,\n                "slug": slug.current,\n                "imageUrl": image.asset->url,\n                "imageAlt": image.alt,\n                "author": author->name,\n                "cateogry": category->name,\n                excerpt,\n              }\n }': AUTHOR_QUERY_RESULT;
     '*[_type == \'blog\' \n  && defined(slug.current)]\n  |order(publishedAt desc){\n    name,\n    "slug": slug.current,\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    "author": author->name,\n    "cateogry": category->name,\n    excerpt,\n}': BLOGS_QUERY_RESULT;
+    '*[_type == \'utilityPage\'\n && slug.current == $slug][0]{\n  name,\n  body,\n  "seo": {\n    "title": coalesce(seo.metaTitle, ""),\n    "description": coalesce(seo.metaDescription),\n    "noIndex" : seo.noIndex == true\n  }\n }': UTILITY_PAGE_QUERY_RESULT;
+    '*[_type == \'utilityPage\'\n  && defined(slug.current)]{\n    "slug": slug.current\n  }': UTILITY_PAGES_QUERY_RESULT;
   }
 }
