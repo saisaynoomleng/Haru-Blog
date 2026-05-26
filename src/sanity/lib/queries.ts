@@ -52,6 +52,23 @@ export const FOOTER_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
   }
 }`);
 
+export const HEADER_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
+  navigation[]{
+    _type,
+    label,
+    "isButton": select(_type == 'navLink' => isButton == true),
+    "href": select(_type == 'navLink' => href),
+    "dropdownItems": select(_type == 'navDropdown' => dropdownItems[]{
+      label,
+      href,
+      "isButton": isButton == true
+    })
+  },
+  "logoUrl": primaryLogo.asset->url,
+  "logoAlt": primaryLogo.alt,
+  socialLinks[]
+}`);
+
 export const AUTHORS_QUERY = defineQuery(`*[_type == 'author'
  && defined(slug.current)]
  | order(name desc)

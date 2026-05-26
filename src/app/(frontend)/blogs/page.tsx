@@ -1,6 +1,10 @@
 import React from 'react';
 
-const ArticlesPage = () => {
+const ArticlesPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) => {
   return <div>ArticlesPage</div>;
 };
 

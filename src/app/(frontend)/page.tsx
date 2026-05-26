@@ -1,8 +1,8 @@
 import Bounded from '@/components/shared/Bounded';
 import { Hero } from '@/components/shared/Hero';
-import { PaperTorn } from '@/components/shared/PaperTorn';
 import { YouTubeEmbeded } from '@/components/shared/YouTubeEmbeded';
-import { SignInButton } from '@clerk/nextjs';
+import { UserButton, SignInButton, SignOutButton } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
 
 const mockBlog = {
   author: 'Laura Tarafa',
@@ -17,7 +17,8 @@ const mockBlog = {
   href: 'the-2026-memorial-day-weekend-deals-elle-editors-say-are-actually-worth-your-money',
 };
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
   return (
     <Bounded as="main">
       <Hero
@@ -31,7 +32,6 @@ export default function Home() {
         scrollIndicator
       />
       <YouTubeEmbeded videoId="5NGyXTsg77E" title="lasdf" />
-      <SignInButton />
     </Bounded>
   );
 }

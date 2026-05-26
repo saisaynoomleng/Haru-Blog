@@ -35,6 +35,7 @@ const HeroImage = ({ imageUrl, imageAlt }: Media) => {
         alt={imageAlt || ''}
         fill
         className="object-cover w-full rounded-lg saturate-0 brightness-75"
+        loading="lazy"
       />
     </div>
   );
@@ -67,7 +68,7 @@ export const Hero = ({
           <p>{description}</p>
           <CallToAction
             label={action.label}
-            href={action.href}
+            href={`/blogs/${action.href}`}
             className="self-start"
           />
         </div>
@@ -99,7 +100,7 @@ export const Hero = ({
           <p>{description}</p>
           <CallToAction
             label={action.label}
-            href={action.href}
+            href={`/blogs/${action.href}`}
             className="self-start"
           />
         </div>
@@ -111,7 +112,7 @@ export const Hero = ({
     <div
       className={twMerge(
         clsx(
-          'grid md:grid-cols-[2fr_1fr] md:gap-x-5 gap-y-3 min-h-[90dvh]',
+          'grid md:grid-cols-[2fr_1fr] md:gap-x-5 gap-y-3 min-h-[90dvh] shadow-sm p-4 md:p-0 md:shadow-none',
           className,
         ),
       )}
@@ -130,7 +131,7 @@ export const Hero = ({
           {eyebrow}
         </p>
         <p>{description}</p>
-        <CallToAction label={action.label} href={action.href} />
+        <CallToAction label={action.label} href={`/blogs/${action.href}`} />
       </div>
     </div>
   );

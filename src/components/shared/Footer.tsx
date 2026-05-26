@@ -34,6 +34,7 @@ const Footer = async () => {
             width={400}
             height={300}
             className="object-cover min-w-full"
+            loading="lazy"
           />
         ) : null}
         <p className="text-center text-neutral-50/70 text-fs-300">
