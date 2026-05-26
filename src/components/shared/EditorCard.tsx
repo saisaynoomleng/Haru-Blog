@@ -34,6 +34,7 @@ export const EditorCard = ({
           width={200}
           height={400}
           className="object-cover rounded-lg"
+          loading="lazy"
         />
       </div>
 

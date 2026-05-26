@@ -1,6 +1,9 @@
-import React from 'react';
-
-const ArticleDetailsPage = () => {
+const ArticleDetailsPage = ({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) => {
+  
   return <div>ArticleDetailsPage</div>;
 };
 

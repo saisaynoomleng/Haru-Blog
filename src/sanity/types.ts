@@ -527,6 +527,39 @@ export type FOOTER_QUERY_RESULT = {
 } | null;
 
 // Source: src/sanity/lib/queries.ts
+// Variable: HEADER_QUERY
+// Query: *[_type == 'siteSetting'][0]{  navigation[]{    _type,    label,    "isButton": select(_type == 'navLink' => isButton == true),    "href": select(_type == 'navLink' => href),    "dropdownItems": select(_type == 'navDropdown' => dropdownItems[]{      label,      href,      "isButton": isButton == true    })  },  "logoUrl": primaryLogo.asset->url,  "logoAlt": primaryLogo.alt,  socialLinks[]}
+export type HEADER_QUERY_RESULT = {
+  navigation: Array<
+    | {
+        _type: 'navDropdown';
+        label: string | null;
+        isButton: null;
+        href: null;
+        dropdownItems: Array<{
+          label: string | null;
+          href: string | null;
+          isButton: boolean | false;
+        }> | null;
+      }
+    | {
+        _type: 'navLink';
+        label: string | null;
+        isButton: boolean | false;
+        href: string | null;
+        dropdownItems: null;
+      }
+  > | null;
+  logoUrl: string | null;
+  logoAlt: string | null;
+  socialLinks: Array<
+    {
+      _key: string;
+    } & SocialLink
+  > | null;
+} | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: AUTHORS_QUERY
 // Query: *[_type == 'author' && defined(slug.current)] | order(name desc) {  name,  "slug": slug.current,  "imageUrl": image.asset->url,  "imageAlt": image.alt,  }
 export type AUTHORS_QUERY_RESULT = Array<{
@@ -602,6 +635,7 @@ declare module '@sanity/client' {
     '*[_type == \'membership\'\n && defined(slug.current)]\n  | order(isFeatured desc){\n    name,\n    "slug": slug.current,\n    pricePerMonth,\n    desc,\n    features[],\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    isFeatured\n  }': MEMBERSHIPS_QUERY_RESULT;
     '*[_type == \'faqs\'\n && defined(slug.current)]\n|order(_createdAt desc){\n  name,\n  "slug": slug.current,\n  faqs[]{\n    title,\n    body\n  }\n }': FAQsQUERYResult;
     '*[_type == \'siteSetting\'][0]{\n  footerDescription,\n  footerColumns[]{\n    title,\n    links[]{\n      label,\n      href\n    }\n  },\n  contactInfo,\n  "logoUrl": secondaryLogo.asset->url,\n  "logoAlt": secondaryLogo.alt,\n  socialLinks[]{\n    platform,\n    url\n  }\n}': FOOTER_QUERY_RESULT;
+    '*[_type == \'siteSetting\'][0]{\n  navigation[]{\n    _type,\n    label,\n    "isButton": select(_type == \'navLink\' => isButton == true),\n    "href": select(_type == \'navLink\' => href),\n    "dropdownItems": select(_type == \'navDropdown\' => dropdownItems[]{\n      label,\n      href,\n      "isButton": isButton == true\n    })\n  },\n  "logoUrl": primaryLogo.asset->url,\n  "logoAlt": primaryLogo.alt,\n  socialLinks[]\n}': HEADER_QUERY_RESULT;
     '*[_type == \'author\'\n && defined(slug.current)]\n | order(name desc)\n {\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt, \n }': AUTHORS_QUERY_RESULT;
     '*[_type == \'author\'\n && slug.current == $slug][0]\n {\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt, \n   body,\n   socialLinks[],\n   "blogs": *[_type == \'blog\' \n              && defined(slug.current)\n              && references(^._id)]\n              |order(publishedAt desc){\n                name,\n                "slug": slug.current,\n                "imageUrl": image.asset->url,\n                "imageAlt": image.alt,\n                "author": author->name,\n                "cateogry": category->name,\n                excerpt,\n              }\n }': AUTHOR_QUERY_RESULT;
     '*[_type == \'blog\' \n  && defined(slug.current)]\n  |order(publishedAt desc){\n    name,\n    "slug": slug.current,\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    "author": author->name,\n    "cateogry": category->name,\n    excerpt,\n}': BLOGS_QUERY_RESULT;
