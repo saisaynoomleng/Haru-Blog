@@ -5,13 +5,13 @@ import Link from 'next/link';
 
 export const SanityPortableText: PortableTextComponents = {
   types: {
-    image: (props) =>
+    imageWithAlt: (props) =>
       props.value ? (
         <Image
           src={urlFor(props.value).format('webp').url()}
           width={600}
           height={400}
-          className="rounded-lg object-cover"
+          className="rounded-lg object-cover mx-auto"
           alt={props.value.alt || ''}
           loading="lazy"
         />
@@ -19,11 +19,9 @@ export const SanityPortableText: PortableTextComponents = {
   },
 
   marks: {
-    strong: ({ children }) => <strong className="">{children}</strong>,
-
     link: ({ value, children }) => (
       <Link
-        href={value}
+        href={value?.href} // ✅ fixed
         className="underline decoration-brand-primary-600 underline-offset-2 decoration-1"
       >
         {children}
@@ -39,7 +37,7 @@ export const SanityPortableText: PortableTextComponents = {
       <h3 className="text-brand-primary-800">{children}</h3>
     ),
     h4: ({ children }) => (
-      <h2 className="text-brand-primary-800">{children}</h2>
+      <h4 className="text-brand-primary-800">{children}</h4> // ✅ fixed
     ),
   },
 

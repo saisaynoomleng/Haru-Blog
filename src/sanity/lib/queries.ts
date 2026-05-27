@@ -158,6 +158,36 @@ export const BLOGS_QUERY = defineQuery(`*[_type == 'blog'
     excerpt,
 }`);
 
+export const BLOG_QUERY =
+  defineQuery(`*[_type == 'blog' && slug.current == $slug][0]{
+  name,
+  "slug": slug.current,
+  "imageUrl": image.asset->url,
+  "imageAlt": image.alt,
+  author->{
+    name,
+    "slug": slug.current
+  },
+  "category": category->name,
+  excerpt,
+  minRead,
+  publishedAt,
+  body,
+  "relatedBlogs": *[_type == 'blog'
+                    && defined(slug.current)
+                    && _id != ^._id
+                    && category._ref == ^.category._ref]
+                  | order(publishedAt desc){
+                      name,
+                      "slug": slug.current,
+                      "imageUrl": image.asset->url,
+                      "imageAlt": image.alt,
+                      "author": author->name,
+                      "category": category->name,
+                      excerpt,
+                    }
+}`);
+
 export const UTILITY_PAGE_QUERY = defineQuery(`*[_type == 'utilityPage'
  && slug.current == $slug][0]{
   name,
