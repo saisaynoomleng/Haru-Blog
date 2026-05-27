@@ -1,3 +1,4 @@
+import NewsletterSubscription from '@/components/features/NewsletterSubscription';
 import BlogCard from '@/components/shared/BlogCard';
 import Bounded from '@/components/shared/Bounded';
 import FeaturedBrands from '@/components/shared/FeaturedBrands';
@@ -189,6 +190,10 @@ const HomePage = async () => {
         <Suspense fallback={<MemberAccessFeatureSkeleton />}>
           <MemberAccessFeature features={accessFeatures.memberAccessFeatures} />
         </Suspense>
+      </Bounded>
+
+      <Bounded padding="none">
+        <NewsletterSubscription />
       </Bounded>
     </Bounded>
   );

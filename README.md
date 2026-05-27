@@ -12,6 +12,9 @@
 - 5/23/2026 => CMS setup, Components Development
 - 5/24/2026 => Components Development
 - 5/24/2026 => Components Development, Database setup, Authentication Setup
+- 5/25/2026 => Components Setup
+- 5/26/2026 => Development
+- 5/27/2026 => Development
 
 ---
 
@@ -39,6 +42,9 @@
 ## Features
 
 ### User
+
+- User can sign up using email & OAuth(Google, GitHub, Apple)
+- User can subscribe to newsletter and get future updates via email
 
 ### Admin
 

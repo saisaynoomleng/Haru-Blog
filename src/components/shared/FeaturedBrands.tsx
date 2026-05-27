@@ -13,7 +13,7 @@ type FeaturedBrandsProps = {
 const FeaturedBrands = async ({ className, brands }: FeaturedBrandsProps) => {
   return (
     <div className={twMerge(clsx('space-y-10'))}>
-      <h3 className="font-semibold text-fs-600 text-center text-brand-neutral-900/50">
+      <h3 className="font-semibold text-fs-600 text-center text-brand-neutral-900/50 font-sans">
         Featured Brands
       </h3>
       <div className="flex items-center justify-around gap-x-5 overflow-hidden">
@@ -24,11 +24,10 @@ const FeaturedBrands = async ({ className, brands }: FeaturedBrandsProps) => {
               .format('webp')
               .url()}
             alt={b.imageAlt || ''}
-            width={100}
-            height={50}
+            width={1024}
+            height={322}
             loading="lazy"
-            className="object-cover "
-            sizes="(max-width:50px)"
+            className="object-cover max-w-25"
           />
         ))}
       </div>
