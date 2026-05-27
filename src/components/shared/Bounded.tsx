@@ -29,7 +29,7 @@ const Bounded = ({
     <Comp
       className={twMerge(
         clsx(
-          'space-y-8 md:space-y-10 lg:space-y-12 min-h-screen py-4 md:py-6',
+          'space-y-8 md:space-y-10 lg:space-y-12 py-4 md:py-6',
           paddingSize[padding],
           isCentered && 'mx-auto max-w-7xl w-full',
           className,

@@ -46,7 +46,7 @@ const MobileNav = ({ navigation, socialLinks, className }: MobileNavProps) => {
       <div
         className={twMerge(
           clsx(
-            'flex flex-col gap-y-1 font-sans font-semibold text-fs-500 bg-paper-texture transition-transform duration-200 fixed inset-0 z-40 p-10',
+            'flex flex-col gap-y-1 font-sans font-semibold text-fs-500 bg-paper-texture transition-transform duration-200 fixed inset-0 z-40 p-10 uppercase',
             navOpen ? 'translate-y-0' : '-translate-y-full',
           ),
         )}

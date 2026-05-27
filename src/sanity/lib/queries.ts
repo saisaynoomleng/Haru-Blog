@@ -1,5 +1,38 @@
 import { defineQuery } from 'next-sanity';
 
+export const HERO_BLOG_QUERY = defineQuery(`*[_type == 'blog'
+ && defined(slug.current)]
+|order(isFeatured desc){
+  name,
+  "imageUrl": image.asset->url,
+  "imageAlt": image.alt,
+  "slug": slug.current,
+  "author": author->name,
+  "category": category->name,
+  excerpt,
+ }`);
+
+export const FEATURED_BRANDS_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
+  featuredBrand[]{
+    name,
+    "imageUrl": image.asset->url,
+    "imageAlt": image.alt,
+    _key
+  }
+}`);
+
+export const MEMBER_ACCESS_FEATURES_QUERY =
+  defineQuery(`*[_type == 'siteSetting'][0]{
+  memberAccessFeatures[]{
+    title,
+    body,
+    "image": {
+      "imageUrl": image.asset->url,
+      "imageAlt": image.alt
+    }
+  }
+}`);
+
 export const MEMBERS_QUERY = defineQuery(`*[_type == 'member'
  && defined(slug.current)]
 | order(_createdAt desc){

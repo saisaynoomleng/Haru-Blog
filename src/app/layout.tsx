@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Arapey, Karla } from 'next/font/google';
 import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
+import { quilon } from '@/lib/fonts';
 
 const arapey = Arapey({
   variable: '--font-arapey',
@@ -32,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${arapey.variable} ${karla.variable} h-full antialiased`}
+      className={`${arapey.variable} ${karla.variable} ${quilon.variable} h-full antialiased`}
     >
       <ClerkProvider>
         <body className="min-h-full flex flex-col">{children}</body>

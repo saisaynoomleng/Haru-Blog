@@ -41,6 +41,56 @@ export const siteSettingType = defineType({
       validation: (rule) => rule.required(),
       group: 'branding',
     }),
+    defineField({
+      name: 'featuredBrand',
+      title: 'Featured Brand',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'name',
+              title: 'Feature Brand Name',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'image',
+              title: 'Brand Image',
+              type: 'imageWithAlt',
+              validation: (rule) => rule.required(),
+            }),
+          ],
+        },
+      ],
+      group: 'branding',
+    }),
+    defineField({
+      name: 'memberAccessFeatures',
+      title: 'Member Access features',
+      type: 'array',
+      group: 'branding',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              type: 'string',
+            }),
+            defineField({
+              name: 'body',
+              type: 'text',
+            }),
+            defineField({
+              name: 'image',
+              type: 'imageWithAlt',
+            }),
+          ],
+        }),
+      ],
+    }),
 
     // navigation
     defineField({

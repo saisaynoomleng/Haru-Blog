@@ -21,3 +21,17 @@ export const formatDate = (date: string | Date): string => {
     year: 'numeric',
   });
 };
+
+export const getInitials = (
+  name: string | undefined,
+): string | undefined | null => {
+  return (
+    name &&
+    name
+      .trim()
+      .replace(/\s+/g, ' ')
+      .split(' ')
+      .map((w) => w[0].toUpperCase())
+      .join(' ')
+  );
+};
