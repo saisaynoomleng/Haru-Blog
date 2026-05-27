@@ -13,6 +13,8 @@ export const env = createEnv({
     RESEND_EMAIL_FROM: z
       .string()
       .min(1, 'Resend email from must has at least 1 charcter'),
+    BLOB_STORE_ID: z.string(),
+    BLOB_READ_WRITE_TOKEN: z.string(),
   },
   experimental__runtimeEnv: process.env,
 });

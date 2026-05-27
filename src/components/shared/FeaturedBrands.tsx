@@ -15,7 +15,7 @@ const FeaturedBrands = async ({ className, brands }: FeaturedBrandsProps) => {
       <h3 className="font-semibold text-fs-600 text-center text-brand-neutral-900/50 font-sans">
         Featured Brands
       </h3>
-      <div className="flex items-center justify-around gap-x-5 overflow-hidden">
+      <div className="flex flex-col gap-y-5 md:flex-row items-center justify-around gap-x-5 overflow-hidden">
         {brands?.map((b) => (
           <Image
             key={b._key}

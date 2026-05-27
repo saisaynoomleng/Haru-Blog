@@ -27,13 +27,13 @@ const NewsletterSubscription = () => {
   return (
     <Form
       action={actionFunction}
-      className="space-y-8 bg-paper-texture p-5 mix-blend-multiply bg-brand-error-400"
+      className="space-y-8 bg-paper-texture p-5 py-20 mix-blend-multiply bg-brand-error-400"
     >
       <h3 className="font-semibold font-sans text-center text-fs-600 md:text-fs-700">
         Join Our Newsletter!
       </h3>
 
-      <div className="space-y-1">
+      <div className="space-y-1 max-w-100 mx-auto">
         <label htmlFor="email" className="form-label">
           Email
         </label>
@@ -49,7 +49,7 @@ const NewsletterSubscription = () => {
         )}
       </div>
 
-      <SubmitButton className="self-center w-25" />
+      <SubmitButton className="mx-auto block w-25" />
     </Form>
   );
 };
