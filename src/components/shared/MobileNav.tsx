@@ -6,7 +6,7 @@ import { useAuth, UserButton } from '@clerk/nextjs';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { RiCloseFill } from 'react-icons/ri';
 import { twMerge } from 'tailwind-merge';
@@ -22,6 +22,14 @@ const MobileNav = ({ navigation, socialLinks, className }: MobileNavProps) => {
   const [navOpen, setNavOpen] = useState<boolean>(false);
   const dropdown = navigation?.find((item) => item._type == 'navDropdown');
   const pathname = usePathname();
+
+  useEffect(() => {
+    document.body.style.overflow = navOpen ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [navOpen]);
 
   return (
     <nav className={twMerge(clsx('gap-x-3 items-center', className))}>
@@ -53,7 +61,7 @@ const MobileNav = ({ navigation, socialLinks, className }: MobileNavProps) => {
       >
         <div className="space-y-3">
           <p className="font-bold text-fs-600 text-brand-primary-800">Topic</p>
-          <ul className="flex gap-x-1">
+          <ul className="flex flex-col gap-y-3">
             {navigation?.map((nav) => {
               if (nav._type === 'navLink' && !nav.isButton) {
                 return (

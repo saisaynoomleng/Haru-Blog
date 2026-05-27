@@ -1,3 +1,4 @@
+import { env } from '@/lib/env/client';
 import {
   Html,
   Body,
@@ -16,6 +17,7 @@ import {
 } from 'react-email';
 
 export const NewsletterEmail = () => {
+  const url = env.NEXT_PUBLIC_VERCEL_PROJECT_URL;
   return (
     <Html>
       <Head />
@@ -25,7 +27,7 @@ export const NewsletterEmail = () => {
           <Container className="mx-auto my-10 max-w-116.25 rounded border border-brand-primary-600 p-5">
             <Section className="mt-6">
               <Img
-                src="https://cdn.sanity.io/images/u19h5dbs/production/c129f6bd286525ca395edaf80fb9a2219eaded01-611x140.png"
+                src="https://ogqxbog6vhc1huym.public.blob.vercel-storage.com/primary_logo%20%281%29.png"
                 alt="haru blog logo"
                 className="my-0 min-w-full"
               />
@@ -76,9 +78,12 @@ export const NewsletterEmail = () => {
 
             <Hr className="my-4 border-brand-neutral-400 border-t-2" />
 
-            <Link href="https://www.google.com" className="inline-block">
-              support@harublog
-            </Link>
+            <Text>
+              Check our webstie —
+              <Link href={url} className="inline-block">
+                Haru Blog
+              </Link>
+            </Text>
           </Container>
         </Body>
       </Tailwind>
