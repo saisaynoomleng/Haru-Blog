@@ -98,7 +98,7 @@ const HomePage = async () => {
                 author={blog.author || ''}
                 title={blog.name || ''}
                 excerpt={blog.excerpt || ''}
-                href={`/blogs/${blog.slug}`}
+                href={`${blog.slug}`}
                 variant="default"
                 className="aspect-video"
               />

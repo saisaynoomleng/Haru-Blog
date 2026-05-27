@@ -145,14 +145,16 @@ export const AUTHOR_QUERY = defineQuery(`*[_type == 'author'
  }`);
 
 export const BLOGS_QUERY = defineQuery(`*[_type == 'blog' 
-  && defined(slug.current)]
-  |order(publishedAt desc){
+  && defined(slug.current)
+  && (!defined($category)) 
+  || (category->name match $category)
+ ]|order(publishedAt desc){
     name,
     "slug": slug.current,
     "imageUrl": image.asset->url,
     "imageAlt": image.alt,
     "author": author->name,
-    "cateogry": category->name,
+    "category": category->name,
     excerpt,
 }`);
 

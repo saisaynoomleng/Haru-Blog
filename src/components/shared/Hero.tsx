@@ -69,7 +69,7 @@ export const Hero = ({
           <p>{description}</p>
           <CallToAction
             label={action.label}
-            href={`/blogs/${action.href}`}
+            href={action.href}
             className="self-start"
           />
         </div>
@@ -82,7 +82,7 @@ export const Hero = ({
       <div
         className={twMerge(
           clsx(
-            '"relative min-h-[90dvh] flex flex-col gap-y-10 p-4 md:p-10"',
+            'relative min-h-[90dvh] flex flex-col justify-between gap-y-10 p-4 md:p-10',
             className,
           ),
         )}
@@ -93,17 +93,19 @@ export const Hero = ({
           <p className="uppercase text-neutral-50 relative">{category}</p>
         )}
 
-        <h2 className="font-bold relative text-fs-600 md:text-fs-700 text-neutral-50">
-          {title}
-        </h2>
+        <div className="space-y-3">
+          <h2 className="font-bold relative text-fs-600 md:text-fs-700 text-neutral-50">
+            {title}
+          </h2>
 
-        <div className="flex flex-col p-10 gap-y-10 md:max-w-[50%] bg-paper-texture relative">
-          <p>{description}</p>
-          <CallToAction
-            label={action.label}
-            href={`/blogs/${action.href}`}
-            className="self-start"
-          />
+          <div className="flex flex-col p-10 gap-y-10 md:max-w-[50%] bg-paper-texture relative">
+            <p>{description}</p>
+            <CallToAction
+              label={action.label}
+              href={action.href}
+              className="self-start"
+            />
+          </div>
         </div>
       </div>
     );
@@ -132,7 +134,7 @@ export const Hero = ({
           {eyebrow}
         </p>
         <p>{description}</p>
-        <CallToAction label={action.label} href={`/blogs/${action.href}`} />
+        <CallToAction label={action.label} href={action.href} />
       </div>
     </div>
   );
