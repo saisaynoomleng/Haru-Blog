@@ -21,6 +21,15 @@ export const FEATURED_BRANDS_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
   }
 }`);
 
+export const OUR_STORY_QUERY = defineQuery(`*[_type == 'ourStory'
+ && defined(slug.current)]
+  |order(year){
+  year,
+  "slug": slug.current,
+  body,
+  name
+ }`);
+
 export const MEMBER_ACCESS_FEATURES_QUERY =
   defineQuery(`*[_type == 'siteSetting'][0]{
   memberAccessFeatures[]{

@@ -58,15 +58,11 @@ const HomePage = async () => {
         />
       </Suspense>
 
-      <div className="divider" />
-
-      <Bounded>
+      <Bounded padding="none">
         <Suspense fallback={<FeaturedBrandsSkeleton />}>
           <FeaturedBrands brands={brands.featuredBrand} />
         </Suspense>
       </Bounded>
-
-      <div className="divider" />
 
       <Bounded className="space-y-3" padding="none">
         <SectionTitle

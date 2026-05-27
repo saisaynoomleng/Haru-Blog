@@ -24,7 +24,11 @@ export const MemberCard = ({
   className,
 }: MemberCardProps) => {
   return (
-    <div className={twMerge(clsx('flex flex-col gap-y-3 group', className))}>
+    <div
+      className={twMerge(
+        clsx('flex flex-col gap-y-3 group md:h-100', className),
+      )}
+    >
       <div className="overflow-hidden">
         <Image
           src={urlFor(media.imageUrl).format('webp').url()}

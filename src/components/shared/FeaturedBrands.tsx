@@ -11,7 +11,14 @@ type FeaturedBrandsProps = {
 
 const FeaturedBrands = async ({ className, brands }: FeaturedBrandsProps) => {
   return (
-    <div className={twMerge(clsx('space-y-10', className))}>
+    <div
+      className={twMerge(
+        clsx(
+          'space-y-10 border-t border-b py-12 border-brand-neutral-400/50',
+          className,
+        ),
+      )}
+    >
       <h3 className="font-semibold text-fs-600 text-center text-brand-neutral-900/50 font-sans">
         Featured Brands
       </h3>
