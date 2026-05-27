@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const SanityPortableText: PortableTextComponents = {
   types: {
-    image: (props) => {
+    image: (props) =>
       props.value ? (
         <Image
           src={urlFor(props.value).format('webp').url()}
@@ -15,8 +15,7 @@ export const SanityPortableText: PortableTextComponents = {
           alt={props.value.alt || ''}
           loading="lazy"
         />
-      ) : null;
-    },
+      ) : null,
   },
 
   marks: {

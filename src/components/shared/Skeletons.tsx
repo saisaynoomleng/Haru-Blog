@@ -56,3 +56,15 @@ export const MemberAccessFeatureSkeleton = () => {
     </div>
   );
 };
+
+// members card
+export const MemberCardSkeleton = () => {
+  return (
+    <div className="space-y-3">
+      <Skeleton className="w-full h-75" />
+      <Skeleton className="w-full h-3" />
+      <Skeleton className="w-full h-3" />
+      <Skeleton className="w-full h-3" />
+    </div>
+  );
+};

@@ -487,6 +487,16 @@ export type FEATURED_BRANDS_QUERY_RESULT = {
 } | null;
 
 // Source: src/sanity/lib/queries.ts
+// Variable: OUR_STORY_QUERY
+// Query: *[_type == 'ourStory' && defined(slug.current)]  |order(year){  year,  "slug": slug.current,  body,  name }
+export type OUR_STORY_QUERY_RESULT = Array<{
+  year: number | null;
+  slug: string | null;
+  body: string | null;
+  name: string | null;
+}>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: MEMBER_ACCESS_FEATURES_QUERY
 // Query: *[_type == 'siteSetting'][0]{  memberAccessFeatures[]{    title,    body,    "image": {      "imageUrl": image.asset->url,      "imageAlt": image.alt    }  }}
 export type MEMBER_ACCESS_FEATURES_QUERY_RESULT = {
@@ -683,6 +693,7 @@ declare module '@sanity/client' {
   interface SanityQueries {
     '*[_type == \'blog\'\n && defined(slug.current)]\n|order(isFeatured desc){\n  name,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  "slug": slug.current,\n  "author": author->name,\n  "category": category->name,\n  excerpt,\n }': HERO_BLOG_QUERY_RESULT;
     '*[_type == \'siteSetting\'][0]{\n  featuredBrand[]{\n    name,\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    _key\n  }\n}': FEATURED_BRANDS_QUERY_RESULT;
+    '*[_type == \'ourStory\'\n && defined(slug.current)]\n  |order(year){\n  year,\n  "slug": slug.current,\n  body,\n  name\n }': OUR_STORY_QUERY_RESULT;
     '*[_type == \'siteSetting\'][0]{\n  memberAccessFeatures[]{\n    title,\n    body,\n    "image": {\n      "imageUrl": image.asset->url,\n      "imageAlt": image.alt\n    }\n  }\n}': MEMBER_ACCESS_FEATURES_QUERY_RESULT;
     '*[_type == \'member\'\n && defined(slug.current)]\n| order(_createdAt desc){\n  name,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  email,\n  role\n}': MEMBERS_QUERY_RESULT;
     '*[_type == \'membership\'\n && defined(slug.current)]\n  | order(isFeatured desc){\n    name,\n    "slug": slug.current,\n    pricePerMonth,\n    desc,\n    features[],\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    isFeatured\n  }': MEMBERSHIPS_QUERY_RESULT;
