@@ -656,16 +656,63 @@ export type AUTHOR_QUERY_RESULT = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: BLOGS_QUERY
-// Query: *[_type == 'blog'   && defined(slug.current)]  |order(publishedAt desc){    name,    "slug": slug.current,    "imageUrl": image.asset->url,    "imageAlt": image.alt,    "author": author->name,    "cateogry": category->name,    excerpt,}
-export type BLOGS_QUERY_RESULT = Array<{
-  name: string | null;
-  slug: string | null;
-  imageUrl: string | null;
-  imageAlt: string | null;
-  author: string | null;
-  cateogry: string | null;
-  excerpt: string | null;
-}>;
+// Query: *[_type == 'blog'   && defined(slug.current)  && (!defined($category))   || (category->name match $category) ]|order(publishedAt desc){    name,    "slug": slug.current,    "imageUrl": image.asset->url,    "imageAlt": image.alt,    "author": author->name,    "category": category->name,    excerpt,}
+export type BLOGS_QUERY_RESULT = Array<
+  | {
+      name: null;
+      slug: null;
+      imageUrl: null;
+      imageAlt: null;
+      author: null;
+      category: null;
+      excerpt: null;
+    }
+  | {
+      name: Slug | null;
+      slug: null;
+      imageUrl: null;
+      imageAlt: null;
+      author: null;
+      category: null;
+      excerpt: null;
+    }
+  | {
+      name: string | null;
+      slug: string | null;
+      imageUrl: null;
+      imageAlt: null;
+      author: null;
+      category: null;
+      excerpt: null;
+    }
+  | {
+      name: null;
+      slug: null;
+      imageUrl: string | null;
+      imageAlt: null;
+      author: null;
+      category: null;
+      excerpt: null;
+    }
+  | {
+      name: string | null;
+      slug: string | null;
+      imageUrl: string | null;
+      imageAlt: string | null;
+      author: null;
+      category: null;
+      excerpt: null;
+    }
+  | {
+      name: string | null;
+      slug: string | null;
+      imageUrl: string | null;
+      imageAlt: string | null;
+      author: string | null;
+      category: string | null;
+      excerpt: string | null;
+    }
+>;
 
 // Source: src/sanity/lib/queries.ts
 // Variable: UTILITY_PAGE_QUERY
@@ -702,7 +749,7 @@ declare module '@sanity/client' {
     '*[_type == \'siteSetting\'][0]{\n  navigation[]{\n    _type,\n    label,\n    "isButton": select(_type == \'navLink\' => isButton == true),\n    "href": select(_type == \'navLink\' => href),\n    "dropdownItems": select(_type == \'navDropdown\' => dropdownItems[]{\n      label,\n      href,\n      "isButton": isButton == true\n    })\n  },\n  "logoUrl": primaryLogo.asset->url,\n  "logoAlt": primaryLogo.alt,\n  socialLinks[]\n}': HEADER_QUERY_RESULT;
     '*[_type == \'author\'\n && defined(slug.current)]\n | order(name desc)\n {\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt, \n }': AUTHORS_QUERY_RESULT;
     '*[_type == \'author\'\n && slug.current == $slug][0]\n {\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt, \n   body,\n   socialLinks[],\n   "blogs": *[_type == \'blog\' \n              && defined(slug.current)\n              && references(^._id)]\n              |order(publishedAt desc){\n                name,\n                "slug": slug.current,\n                "imageUrl": image.asset->url,\n                "imageAlt": image.alt,\n                "author": author->name,\n                "cateogry": category->name,\n                excerpt,\n              }\n }': AUTHOR_QUERY_RESULT;
-    '*[_type == \'blog\' \n  && defined(slug.current)]\n  |order(publishedAt desc){\n    name,\n    "slug": slug.current,\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    "author": author->name,\n    "cateogry": category->name,\n    excerpt,\n}': BLOGS_QUERY_RESULT;
+    '*[_type == \'blog\' \n  && defined(slug.current)\n  && (!defined($category)) \n  || (category->name match $category)\n ]|order(publishedAt desc){\n    name,\n    "slug": slug.current,\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    "author": author->name,\n    "category": category->name,\n    excerpt,\n}': BLOGS_QUERY_RESULT;
     '*[_type == \'utilityPage\'\n && slug.current == $slug][0]{\n  name,\n  body,\n  "seo": {\n    "title": coalesce(seo.metaTitle, ""),\n    "description": coalesce(seo.metaDescription),\n    "noIndex" : seo.noIndex == true\n  }\n }': UTILITY_PAGE_QUERY_RESULT;
     '*[_type == \'utilityPage\'\n  && defined(slug.current)]{\n    "slug": slug.current\n  }': UTILITY_PAGES_QUERY_RESULT;
   }

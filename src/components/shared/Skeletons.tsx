@@ -68,3 +68,18 @@ export const MemberCardSkeleton = () => {
     </div>
   );
 };
+
+export const BlogCardSkeleton = () => {
+  return (
+    <div className="grid md:grid-cols-2 gap-6">
+      <div>
+        <Skeleton className="w-full h-100" />
+      </div>
+      <div className="space-y-2">
+        <Skeleton className="w-full h-20" />
+        <Skeleton className="w-full h-20" />
+        <Skeleton className="w-full h-20" />
+      </div>
+    </div>
+  );
+};
