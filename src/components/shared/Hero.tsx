@@ -127,7 +127,7 @@ export const Hero = ({
         )}
       </div>
       <div className="flex flex-col justify-between pt-20">
-        <p className="text-fs-1000 font-black writing-vertical self-center">
+        <p className="text-fs-1000 font-black writing-vertical self-center uppercase">
           {eyebrow}
         </p>
         <p>{description}</p>

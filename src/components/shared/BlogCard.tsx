@@ -32,7 +32,7 @@ const Banner = ({
   return (
     <p
       className={twMerge(
-        clsx('font-semibold bottom-3 px-2 py-1 rounded-2xl border ', className),
+        clsx('font-semibold bottom-3 px-2 py-1 rounded-2xl border', className),
       )}
     >
       {children}
@@ -110,7 +110,12 @@ const BlogCard = ({
           </div>
 
           <div className="flex flex-col gap-y-1 p-2">
-            <div className="flex items-center gap-x-2 text-fs-300">
+            <div
+              className={clsx(
+                'flex items-center gap-x-2 text-fs-300',
+                variant === 'default' && 'flex-col items-start gap-y-1',
+              )}
+            >
               <Banner>{formatTitle(category)}</Banner>
               <Banner>{formatTitle(author)}</Banner>
             </div>

@@ -73,6 +73,17 @@ export type SiteSetting = {
       _key: string;
     } & SocialLink
   >;
+  featuredBrand?: Array<{
+    name?: string;
+    image?: ImageWithAlt;
+    _key: string;
+  }>;
+  memberAccessFeatures?: Array<{
+    title?: string;
+    body?: string;
+    image?: ImageWithAlt;
+    _key: string;
+  }>;
   navigation?: Array<
     | {
         label?: string;
@@ -451,6 +462,45 @@ export type AllSanitySchemaTypes =
   | Geopoint;
 
 // Source: src/sanity/lib/queries.ts
+// Variable: HERO_BLOG_QUERY
+// Query: *[_type == 'blog' && defined(slug.current)]|order(isFeatured desc){  name,  "imageUrl": image.asset->url,  "imageAlt": image.alt,  "slug": slug.current,  "author": author->name,  "category": category->name,  excerpt, }
+export type HERO_BLOG_QUERY_RESULT = Array<{
+  name: string | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  slug: string | null;
+  author: string | null;
+  category: string | null;
+  excerpt: string | null;
+}>;
+
+// Source: src/sanity/lib/queries.ts
+// Variable: FEATURED_BRANDS_QUERY
+// Query: *[_type == 'siteSetting'][0]{  featuredBrand[]{    name,    "imageUrl": image.asset->url,    "imageAlt": image.alt,    _key  }}
+export type FEATURED_BRANDS_QUERY_RESULT = {
+  featuredBrand: Array<{
+    name: string | null;
+    imageUrl: string | null;
+    imageAlt: string | null;
+    _key: string;
+  }> | null;
+} | null;
+
+// Source: src/sanity/lib/queries.ts
+// Variable: MEMBER_ACCESS_FEATURES_QUERY
+// Query: *[_type == 'siteSetting'][0]{  memberAccessFeatures[]{    title,    body,    "image": {      "imageUrl": image.asset->url,      "imageAlt": image.alt    }  }}
+export type MEMBER_ACCESS_FEATURES_QUERY_RESULT = {
+  memberAccessFeatures: Array<{
+    title: string | null;
+    body: string | null;
+    image: {
+      imageUrl: string | null;
+      imageAlt: string | null;
+    };
+  }> | null;
+} | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: MEMBERS_QUERY
 // Query: *[_type == 'member' && defined(slug.current)]| order(_createdAt desc){  name,  "imageUrl": image.asset->url,  "imageAlt": image.alt,  email,  role}
 export type MEMBERS_QUERY_RESULT = Array<{
@@ -631,6 +681,9 @@ export type UTILITY_PAGES_QUERY_RESULT = Array<{
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
+    '*[_type == \'blog\'\n && defined(slug.current)]\n|order(isFeatured desc){\n  name,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  "slug": slug.current,\n  "author": author->name,\n  "category": category->name,\n  excerpt,\n }': HERO_BLOG_QUERY_RESULT;
+    '*[_type == \'siteSetting\'][0]{\n  featuredBrand[]{\n    name,\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    _key\n  }\n}': FEATURED_BRANDS_QUERY_RESULT;
+    '*[_type == \'siteSetting\'][0]{\n  memberAccessFeatures[]{\n    title,\n    body,\n    "image": {\n      "imageUrl": image.asset->url,\n      "imageAlt": image.alt\n    }\n  }\n}': MEMBER_ACCESS_FEATURES_QUERY_RESULT;
     '*[_type == \'member\'\n && defined(slug.current)]\n| order(_createdAt desc){\n  name,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  email,\n  role\n}': MEMBERS_QUERY_RESULT;
     '*[_type == \'membership\'\n && defined(slug.current)]\n  | order(isFeatured desc){\n    name,\n    "slug": slug.current,\n    pricePerMonth,\n    desc,\n    features[],\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    isFeatured\n  }': MEMBERSHIPS_QUERY_RESULT;
     '*[_type == \'faqs\'\n && defined(slug.current)]\n|order(_createdAt desc){\n  name,\n  "slug": slug.current,\n  faqs[]{\n    title,\n    body\n  }\n }': FAQsQUERYResult;
