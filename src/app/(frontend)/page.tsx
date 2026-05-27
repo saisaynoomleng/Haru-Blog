@@ -167,8 +167,8 @@ const HomePage = async () => {
             variant="paperTexture"
             media={{
               imageUrl:
-                'https://cdn.sanity.io/images/u19h5dbs/production/86372cda93683287e731dd15dee6cdfaaa3e0998-1200x630.heif',
-              imageAlt: '3 models',
+                'https://cdn.sanity.io/images/u19h5dbs/production/500f3fec1936cd8e2f8dc38ad742e4ed23e1b734-703x1024.jpg',
+              imageAlt: 'editoral photoshoot',
             }}
             action={{ href: '/about-us', label: 'about us' }}
             title="Meet the Trendsetters Behind our Lifestyle Online Magazine"

@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const SanityPortableText: PortableTextComponents = {
   types: {
     image: (props) => {
-      return props.value ? (
+      props.value ? (
         <Image
           src={urlFor(props.value).format('webp').url()}
           width={600}
