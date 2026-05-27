@@ -17,7 +17,7 @@ type BlogCardProps = {
   category: string;
   author: string;
   title: string;
-  excerpt: string;
+  excerpt?: string;
   href: string;
   variant?: 'default' | 'textOnTop';
 };

@@ -715,6 +715,34 @@ export type BLOGS_QUERY_RESULT = Array<
 >;
 
 // Source: src/sanity/lib/queries.ts
+// Variable: BLOG_QUERY
+// Query: *[_type == 'blog' && slug.current == $slug][0]{  name,  "slug": slug.current,  "imageUrl": image.asset->url,  "imageAlt": image.alt,  author->{    name,    "slug": slug.current  },  "category": category->name,  excerpt,  minRead,  publishedAt,  body,  "relatedBlogs": *[_type == 'blog'                    && defined(slug.current)                    && _id != ^._id                    && category._ref == ^.category._ref]                  | order(publishedAt desc){                      name,                      "slug": slug.current,                      "imageUrl": image.asset->url,                      "imageAlt": image.alt,                      "author": author->name,                      "category": category->name,                      excerpt,                    }}
+export type BLOG_QUERY_RESULT = {
+  name: string | null;
+  slug: string | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  author: {
+    name: string | null;
+    slug: string | null;
+  } | null;
+  category: string | null;
+  excerpt: string | null;
+  minRead: number | null;
+  publishedAt: string | null;
+  body: BlockContent | null;
+  relatedBlogs: Array<{
+    name: string | null;
+    slug: string | null;
+    imageUrl: string | null;
+    imageAlt: string | null;
+    author: string | null;
+    category: string | null;
+    excerpt: string | null;
+  }>;
+} | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: UTILITY_PAGE_QUERY
 // Query: *[_type == 'utilityPage' && slug.current == $slug][0]{  name,  body,  "seo": {    "title": coalesce(seo.metaTitle, ""),    "description": coalesce(seo.metaDescription),    "noIndex" : seo.noIndex == true  } }
 export type UTILITY_PAGE_QUERY_RESULT = {
@@ -750,6 +778,7 @@ declare module '@sanity/client' {
     '*[_type == \'author\'\n && defined(slug.current)]\n | order(name desc)\n {\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt, \n }': AUTHORS_QUERY_RESULT;
     '*[_type == \'author\'\n && slug.current == $slug][0]\n {\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt, \n   body,\n   socialLinks[],\n   "blogs": *[_type == \'blog\' \n              && defined(slug.current)\n              && references(^._id)]\n              |order(publishedAt desc){\n                name,\n                "slug": slug.current,\n                "imageUrl": image.asset->url,\n                "imageAlt": image.alt,\n                "author": author->name,\n                "cateogry": category->name,\n                excerpt,\n              }\n }': AUTHOR_QUERY_RESULT;
     '*[_type == \'blog\' \n  && defined(slug.current)\n  && (!defined($category)) \n  || (category->name match $category)\n ]|order(publishedAt desc){\n    name,\n    "slug": slug.current,\n    "imageUrl": image.asset->url,\n    "imageAlt": image.alt,\n    "author": author->name,\n    "category": category->name,\n    excerpt,\n}': BLOGS_QUERY_RESULT;
+    '*[_type == \'blog\' && slug.current == $slug][0]{\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  author->{\n    name,\n    "slug": slug.current\n  },\n  "category": category->name,\n  excerpt,\n  minRead,\n  publishedAt,\n  body,\n  "relatedBlogs": *[_type == \'blog\'\n                    && defined(slug.current)\n                    && _id != ^._id\n                    && category._ref == ^.category._ref]\n                  | order(publishedAt desc){\n                      name,\n                      "slug": slug.current,\n                      "imageUrl": image.asset->url,\n                      "imageAlt": image.alt,\n                      "author": author->name,\n                      "category": category->name,\n                      excerpt,\n                    }\n}': BLOG_QUERY_RESULT;
     '*[_type == \'utilityPage\'\n && slug.current == $slug][0]{\n  name,\n  body,\n  "seo": {\n    "title": coalesce(seo.metaTitle, ""),\n    "description": coalesce(seo.metaDescription),\n    "noIndex" : seo.noIndex == true\n  }\n }': UTILITY_PAGE_QUERY_RESULT;
     '*[_type == \'utilityPage\'\n  && defined(slug.current)]{\n    "slug": slug.current\n  }': UTILITY_PAGES_QUERY_RESULT;
   }

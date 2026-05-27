@@ -10,7 +10,7 @@ import { Suspense } from 'react';
 const ArticlesPage = async ({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; filter?: string }>;
 }) => {
   const { data: blogs } = await sanityFetch({
     query: BLOGS_QUERY,
@@ -44,9 +44,11 @@ const ArticlesPage = async ({
       </Bounded>
 
       <Bounded padding="none">
-        <h3 className="font-sans text-fs-600 md:text-fs-700 uppercase">
-          {featuredBlog.category} blogs
-        </h3>
+        <div className="flex flex-col md:flex-rows md:justify-between gap-3">
+          <h3 className="font-sans text-fs-600 md:text-fs-700 uppercase">
+            {featuredBlog.category} blogs
+          </h3>
+        </div>
 
         <div className="columns-2 md:columns-4 gap-6">
           {allBlogs.map((blog) => (
