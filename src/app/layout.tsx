@@ -1,14 +1,9 @@
 import type { Metadata } from 'next';
-import { Arapey, Karla } from 'next/font/google';
+import { Karla } from 'next/font/google';
 import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import { quilon } from '@/lib/fonts';
-
-const arapey = Arapey({
-  variable: '--font-arapey',
-  subsets: ['latin'],
-  weight: '400',
-});
+import { Toaster } from 'sonner';
 
 const karla = Karla({
   variable: '--font-karla',
@@ -33,11 +28,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${arapey.variable} ${karla.variable} ${quilon.variable} h-full antialiased`}
+      className={`${karla.variable} ${quilon.variable} h-full antialiased`}
     >
       <ClerkProvider>
         <body className="min-h-full flex flex-col">{children}</body>
       </ClerkProvider>
+      <Toaster closeButton richColors position="bottom-center" />
     </html>
   );
 }

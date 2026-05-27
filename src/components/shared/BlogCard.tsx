@@ -66,6 +66,7 @@ const BlogImage = ({
       height={variant === 'default' ? 400 : undefined}
       fill={variant === 'textOnTop'}
       loading="lazy"
+      sizes="(max-width: 1000px) 100vw, 66vw"
     />
   );
 };

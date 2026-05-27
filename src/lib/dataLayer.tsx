@@ -16,3 +16,9 @@ export const socialIcons: Record<string, JSX.Element> = {
   linkedin: <BsLinkedin />,
   github: <BsGithub />,
 };
+
+export const InitialFormState = {
+  success: false,
+  message: '',
+  field: '',
+};

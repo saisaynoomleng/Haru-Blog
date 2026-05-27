@@ -9,6 +9,10 @@ export const env = createEnv({
     DATABASE_URL: z.string().startsWith('postgresql://'),
     CLERK_SECRET_KEY: z.string().startsWith('sk'),
     CLERK_WEBHOOK_SIGNING_SECRET: z.string(),
+    RESEND_API_KEY: z.string().startsWith('re'),
+    RESEND_EMAIL_FROM: z
+      .string()
+      .min(1, 'Resend email from must has at least 1 charcter'),
   },
   experimental__runtimeEnv: process.env,
 });

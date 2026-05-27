@@ -29,13 +29,14 @@ type HeroProps = {
 
 const HeroImage = ({ imageUrl, imageAlt }: Media) => {
   return (
-    <div className="absolute inset-0">
+    <div className={clsx('absolute inset-0')}>
       <Image
         src={urlFor(imageUrl).format('webp').auto('format').url()}
         alt={imageAlt || ''}
         fill
         className="object-cover w-full rounded-lg saturate-0 brightness-75"
-        loading="lazy"
+        loading="eager"
+        sizes="(max-width: 1000px) 100vw, 66vw"
       />
     </div>
   );

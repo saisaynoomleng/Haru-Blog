@@ -133,6 +133,14 @@
   @apply bg-[url('/paper-texture.jpg')] bg-no-repeat bg-cover;
 }
 
+@utility form-label {
+  @apply block after:absolute after:content-["*"] after:text-brand-error-600 after:ml-0.5;
+}
+
+@utility form-error-message {
+  @apply italic text-fs-300 text-brand-error-700;
+}
+
 /* keyframes */
 @keyframes marquee {
   from {
