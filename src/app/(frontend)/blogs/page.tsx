@@ -5,7 +5,8 @@ const ArticlesPage = async ({
 }: {
   searchParams: Promise<{ category?: string }>;
 }) => {
-  return <div>ArticlesPage</div>;
+  const { category } = await searchParams;
+  return <div>{category}</div>;
 };
 
 export default ArticlesPage;

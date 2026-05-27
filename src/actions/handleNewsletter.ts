@@ -37,13 +37,13 @@ export const handleNewsletter = async (
       from: env.RESEND_EMAIL_FROM,
       to: [email],
       subject: 'Welcome to Haru Blog',
-      react: NewsletterEmail({ email }),
+      react: NewsletterEmail(),
     });
 
     if (resendEmail.error) {
       return {
         success: false,
-        message: 'Resend Email fail',
+        message: resendEmail.error.message,
       };
     }
 
@@ -52,6 +52,7 @@ export const handleNewsletter = async (
       message: 'Thank you for your subscription!',
     };
   } catch (error) {
+    console.error(error);
     return {
       success: false,
       message: 'Something went wrong! Try again later!',

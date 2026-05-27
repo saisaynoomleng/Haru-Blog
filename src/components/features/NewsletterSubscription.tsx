@@ -25,7 +25,10 @@ const NewsletterSubscription = () => {
   }, [state.message, state.success]);
 
   return (
-    <Form action={actionFunction} className="space-y-8 bg-paper-texture p-5">
+    <Form
+      action={actionFunction}
+      className="space-y-8 bg-paper-texture p-5 mix-blend-multiply bg-brand-error-400"
+    >
       <h3 className="font-semibold font-sans text-center text-fs-600 md:text-fs-700">
         Join Our Newsletter!
       </h3>

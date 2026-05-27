@@ -1,5 +1,4 @@
 import { twMerge } from 'tailwind-merge';
-import Bounded from './Bounded';
 import clsx from 'clsx';
 import { FEATURED_BRANDS_QUERY_RESULT } from '@/sanity/types';
 import Image from 'next/image';
@@ -12,7 +11,7 @@ type FeaturedBrandsProps = {
 
 const FeaturedBrands = async ({ className, brands }: FeaturedBrandsProps) => {
   return (
-    <div className={twMerge(clsx('space-y-10'))}>
+    <div className={twMerge(clsx('space-y-10', className))}>
       <h3 className="font-semibold text-fs-600 text-center text-brand-neutral-900/50 font-sans">
         Featured Brands
       </h3>
