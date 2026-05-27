@@ -1,10 +1,11 @@
-const ArticleDetailsPage = ({
+const ArticleDetailsPage = async ({
   searchParams,
 }: {
   searchParams: Promise<{ category?: string }>;
 }) => {
-  
-  return <div>ArticleDetailsPage</div>;
+  const { category } = await searchParams;
+
+  return <div>{category}</div>;
 };
 
 export default ArticleDetailsPage;

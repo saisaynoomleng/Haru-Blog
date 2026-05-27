@@ -14,23 +14,23 @@ type MemberAccessFeatureProps = {
   className?: string;
 };
 
+const defaultFeature = {
+  title: 'Unlimited Article Access',
+  body: 'Get unrestricted access to all premium blog posts. Stay updated with exclusive content that dives deep into fashion, beauty, and lifestyle insights just for you.',
+  image: {
+    imageAlt: 'model posing',
+    imageUrl:
+      'https://cdn.sanity.io/images/u19h5dbs/production/107029296c17d021c00b3cf3ef78fa515915e020-736x1051.jpg',
+  },
+};
+
 const MemberAccessFeature = ({
   className,
   features,
 }: MemberAccessFeatureProps) => {
-  const defaultFeature = {
-    title: 'Unlimited Article Access',
-    body: 'Get unrestricted access to all premium blog posts. Stay updated with exclusive content that dives deep into fashion, beauty, and lifestyle insights just for you.',
-    image: {
-      imageAlt: 'model posing',
-      imageUrl:
-        'https://cdn.sanity.io/images/u19h5dbs/production/107029296c17d021c00b3cf3ef78fa515915e020-736x1051.jpg',
-    },
-  };
+  const [current, setCurrent] = useState<typeof defaultFeature>(defaultFeature);
 
   if (!features) return null;
-
-  const [current, setCurrent] = useState<typeof defaultFeature>(defaultFeature);
 
   return (
     <div className={twMerge(clsx('grid md:grid-cols-2 md:gap-x-5', className))}>

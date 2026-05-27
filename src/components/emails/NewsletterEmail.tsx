@@ -15,7 +15,7 @@ import {
   Hr,
 } from 'react-email';
 
-export const NewsletterEmail = ({ email }: { email: string }) => {
+export const NewsletterEmail = () => {
   return (
     <Html>
       <Head />
@@ -51,8 +51,8 @@ export const NewsletterEmail = ({ email }: { email: string }) => {
               {
                 description: 'Curated editor picks and exclusive features',
               },
-            ].map((feature) => (
-              <Section className="mb-9">
+            ].map((feature, i) => (
+              <Section className="mb-9" key={i}>
                 <Row className="pr-8 pl-3">
                   <Column valign="top">
                     <Text className="m-0 text-gray-500 text-fs-300 leading-6">
