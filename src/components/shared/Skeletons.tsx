@@ -83,3 +83,12 @@ export const BlogCardSkeleton = () => {
     </div>
   );
 };
+
+export const EditorCardSkeleton = () => {
+  return (
+    <div className="space-y-2">
+      <Skeleton className="w-full h-20" />
+      <Skeleton className="w-full h-3" />
+    </div>
+  );
+};

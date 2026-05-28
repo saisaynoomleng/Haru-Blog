@@ -120,7 +120,7 @@ export const Hero = ({
         ),
       )}
     >
-      <div className="flex flex-col justify-between p-5 relative text-neutral-50">
+      <div className="flex flex-col justify-between p-5 relative text-neutral-50 max-md:min-h-[90dvh]">
         <HeroImage imageAlt={media.imageAlt} imageUrl={media.imageUrl} />
         <h2 className="font-bold relative text-fs-600 md:text-fs-700">
           {title}

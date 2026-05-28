@@ -54,7 +54,7 @@ const MobileNav = ({ navigation, socialLinks, className }: MobileNavProps) => {
       <div
         className={twMerge(
           clsx(
-            'flex flex-col gap-y-1 font-sans font-semibold text-fs-500 bg-paper-texture transition-transform duration-200 fixed inset-0 z-40 p-10 uppercase',
+            'flex flex-col gap-y-1 font-sans font-semibold bg-paper-texture transition-transform duration-200 fixed inset-0 z-40 p-10 uppercase',
             navOpen ? 'translate-y-0' : '-translate-y-full',
           ),
         )}
@@ -70,7 +70,7 @@ const MobileNav = ({ navigation, socialLinks, className }: MobileNavProps) => {
                       key={nav.href}
                       href={nav.href as string}
                       className={clsx(
-                        'px-2 hover:bg-brand-primary-100 rounded-sm',
+                        ' hover:bg-brand-primary-100 rounded-sm',
                         pathname === nav.href &&
                           'font-semibold bg-brand-primary-300',
                       )}
@@ -84,8 +84,6 @@ const MobileNav = ({ navigation, socialLinks, className }: MobileNavProps) => {
             })}
           </ul>
         </div>
-
-        <div className="divider" />
 
         <div className="space-y-3">
           <p className="font-bold text-fs-600 text-brand-primary-800">Sites</p>
@@ -103,8 +101,6 @@ const MobileNav = ({ navigation, socialLinks, className }: MobileNavProps) => {
             ))}
           </ul>
         </div>
-
-        <div className="divider" />
 
         <div className="space-y-3">
           <p className="font-bold text-fs-600 text-brand-primary-800">

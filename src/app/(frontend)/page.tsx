@@ -81,7 +81,7 @@ const HomePage = async () => {
               author={fashion[0].author || ''}
               title={fashion[0].name || ''}
               excerpt={fashion[0].excerpt || ''}
-              href={`/blogs/${fashion[0].slug}`}
+              href={`${fashion[0].slug}`}
               variant="textOnTop"
             />
           </div>
@@ -98,7 +98,7 @@ const HomePage = async () => {
                 author={blog.author || ''}
                 title={blog.name || ''}
                 excerpt={blog.excerpt || ''}
-                href={`${blog.slug}`}
+                href={blog.slug || ''}
                 variant="default"
                 className="aspect-video"
               />
@@ -132,7 +132,7 @@ const HomePage = async () => {
                 author={blog.author || ''}
                 title={blog.name || ''}
                 excerpt={blog.excerpt || ''}
-                href={`/blogs/${blog.slug}`}
+                href={blog.slug || ''}
                 variant="default"
                 className="aspect-video"
               />
@@ -150,7 +150,7 @@ const HomePage = async () => {
               author={beauty[0].author || ''}
               title={beauty[0].name || ''}
               excerpt={beauty[0].excerpt || ''}
-              href={`/blogs/${beauty[0].slug}`}
+              href={`${beauty[0].slug}`}
               variant="textOnTop"
             />
           </div>
