@@ -31,9 +31,11 @@ export default function RootLayout({
       className={`${karla.variable} ${quilon.variable} h-full antialiased`}
     >
       <ClerkProvider>
-        <body className="min-h-full flex flex-col">{children}</body>
+        <body className="min-h-full flex flex-col">
+          {children}
+          <SpeedInsights />
+        </body>
       </ClerkProvider>
-      <SpeedInsights />
     </html>
   );
 }
