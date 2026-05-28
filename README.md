@@ -32,7 +32,7 @@
 - Stripe(payment)
 - Vitest, Playwright(Testing)
 - VercelBlob(storage)
-- React Email(Email List)
+- Resend(email)
 - GSAP(animation)
 - Storybook(Design System)
 - React Map GL(map)

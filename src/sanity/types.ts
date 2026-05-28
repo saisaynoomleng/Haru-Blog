@@ -762,6 +762,23 @@ export type UTILITY_PAGES_QUERY_RESULT = Array<{
   slug: string | null;
 }>;
 
+// Source: src/sanity/lib/queries.ts
+// Variable: MAP_QUERY
+// Query: *[_type == 'siteSetting'][0]{  "lat": contactInfo.latitude,  "long": contactInfo.longitude,  contactInfo{    address1,    city,    country,    email,    phone,    state,    zip  }}
+export type MAP_QUERY_RESULT = {
+  lat: number | null;
+  long: number | null;
+  contactInfo: {
+    address1: string | null;
+    city: string | null;
+    country: string | null;
+    email: string | null;
+    phone: string | null;
+    state: string | null;
+    zip: string | null;
+  } | null;
+} | null;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -781,5 +798,6 @@ declare module '@sanity/client' {
     '*[_type == \'blog\' && slug.current == $slug][0]{\n  name,\n  "slug": slug.current,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  author->{\n    name,\n    "slug": slug.current\n  },\n  "category": category->name,\n  excerpt,\n  minRead,\n  publishedAt,\n  body,\n  "relatedBlogs": *[_type == \'blog\'\n                    && defined(slug.current)\n                    && _id != ^._id\n                    && category._ref == ^.category._ref]\n                  | order(publishedAt desc){\n                      name,\n                      "slug": slug.current,\n                      "imageUrl": image.asset->url,\n                      "imageAlt": image.alt,\n                      "author": author->name,\n                      "category": category->name,\n                      excerpt,\n                    }\n}': BLOG_QUERY_RESULT;
     '*[_type == \'utilityPage\'\n && slug.current == $slug][0]{\n  name,\n  body,\n  "seo": {\n    "title": coalesce(seo.metaTitle, ""),\n    "description": coalesce(seo.metaDescription),\n    "noIndex" : seo.noIndex == true\n  }\n }': UTILITY_PAGE_QUERY_RESULT;
     '*[_type == \'utilityPage\'\n  && defined(slug.current)]{\n    "slug": slug.current\n  }': UTILITY_PAGES_QUERY_RESULT;
+    '*[_type == \'siteSetting\'][0]{\n  "lat": contactInfo.latitude,\n  "long": contactInfo.longitude,\n  contactInfo{\n    address1,\n    city,\n    country,\n    email,\n    phone,\n    state,\n    zip\n  }\n}': MAP_QUERY_RESULT;
   }
 }
