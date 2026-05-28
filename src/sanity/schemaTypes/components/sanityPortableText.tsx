@@ -9,8 +9,8 @@ export const SanityPortableText: PortableTextComponents = {
       props.value ? (
         <Image
           src={urlFor(props.value).format('webp').url()}
-          width={600}
-          height={400}
+          width={800}
+          height={600}
           className="rounded-lg object-cover mx-auto"
           alt={props.value.alt || ''}
           loading="lazy"

@@ -7,6 +7,18 @@ import { BLOGS_QUERY } from '@/sanity/lib/queries';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
+export async function generateStaticParams() {
+  const { data: pages } = await sanityFetch({
+    query: BLOGS_QUERY,
+    perspective: 'published',
+    stega: false,
+  });
+
+  return pages.slice(0, 100).map((p) => ({
+    slug: p.slug,
+  }));
+}
+
 const ArticlesPage = async ({
   searchParams,
 }: {
@@ -46,7 +58,7 @@ const ArticlesPage = async ({
       <Bounded padding="none">
         <div className="flex flex-col md:flex-rows md:justify-between gap-3">
           <h3 className="font-sans text-fs-600 md:text-fs-700 uppercase">
-            {featuredBlog.category} blogs
+            {featuredBlog.category} articles
           </h3>
         </div>
 

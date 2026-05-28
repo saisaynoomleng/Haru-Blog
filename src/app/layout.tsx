@@ -3,6 +3,7 @@ import { Karla } from 'next/font/google';
 import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import { quilon } from '@/lib/fonts';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const karla = Karla({
   variable: '--font-karla',
@@ -32,6 +33,7 @@ export default function RootLayout({
       <ClerkProvider>
         <body className="min-h-full flex flex-col">{children}</body>
       </ClerkProvider>
+      <SpeedInsights />
     </html>
   );
 }

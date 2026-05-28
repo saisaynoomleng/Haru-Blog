@@ -1,6 +1,8 @@
+import BackTo from '@/components/shared/BackTo';
 import BlogCard from '@/components/shared/BlogCard';
 import Bounded from '@/components/shared/Bounded';
 import { BlogCardSkeleton } from '@/components/shared/Skeletons';
+import { Skeleton } from '@/components/ui/skeleton';
 import { formatDate } from '@/lib/formatter';
 import { urlFor } from '@/sanity/lib/image';
 import { sanityFetch } from '@/sanity/lib/live';
@@ -39,25 +41,22 @@ const ArticleDetailsPage = async ({
 
   return (
     <Bounded as="main">
-      <Link
-        href={`/blogs?category=${category?.toLowerCase()}`}
-        className="flex items-center gap-x-3 group"
-      >
-        <FaArrowLeftLong className="group-hover:-translate-x-2 transition-transform duration-200" />
-        <span className="group-hover:underline">
-          Back to all {category} articles
-        </span>
-      </Link>
+      <BackTo
+        href={`/blogs?category=${category}`}
+        label={`${category} articles`}
+      />
       <div className="relative aspect-video overflow-hidden rounded-lg">
         {imageUrl && (
-          <Image
-            src={urlFor(imageUrl).format('webp').url()}
-            alt={imageAlt || ''}
-            fill
-            className="object-cover w-full rounded-lg aspect-video"
-            sizes="(max-width: 1000px) 100vw, 66vw"
-            loading="eager"
-          />
+          <Suspense fallback={<Skeleton className="w-full h-100" />}>
+            <Image
+              src={urlFor(imageUrl).format('webp').url()}
+              alt={imageAlt || ''}
+              fill
+              className="object-cover w-full rounded-lg aspect-video"
+              sizes="(max-width: 1000px) 100vw, 66vw"
+              loading="eager"
+            />
+          </Suspense>
         )}
       </div>
 
@@ -103,7 +102,7 @@ const ArticleDetailsPage = async ({
           Related Blogs
         </h3>
 
-        <div className="flex overflow-hidden scroll-auto gap-x-5">
+        <div className="flex overflow-x-auto flex-nowrap gap-x-5">
           {relatedBlogs.map((blog) => (
             <Suspense fallback={<BlogCardSkeleton />} key={blog.slug}>
               <BlogCard
@@ -111,7 +110,7 @@ const ArticleDetailsPage = async ({
                   imageUrl: blog.imageUrl || '',
                   imageAlt: blog.imageAlt || '',
                 }}
-                className="w-100"
+                className="min-w-50"
                 author={blog.author || ''}
                 category={blog.category || ''}
                 title={blog.name || ''}
