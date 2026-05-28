@@ -13,7 +13,7 @@ const SubmitButton = ({ className }: { className?: string }) => {
     <Button
       className={twMerge(
         clsx(
-          'bg-brand-success-300 text-shadow-brand-neutral-950 uppercase hover:bg-brand-success-400 rounded-2xl! cursor-pointer',
+          'bg-brand-success-300 text-shadow-brand-neutral-950 uppercase hover:bg-brand-success-400 rounded-2xl! cursor-pointer min-w-25',
           className,
         ),
       )}

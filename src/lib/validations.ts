@@ -14,7 +14,15 @@ export const ClerkWebhookPayloadSchema = z.object({
 });
 
 export const NewsletterSubscriptionSchema = z.object({
-  email: z
-    .email('Must be a valid email address')
-    .min(1, 'Must have at least 1 character'),
+  email: z.email().min(1, 'Must have at least 1 character'),
+});
+
+export const ContactFormSchema = z.object({
+  name: z.string().min(1, 'Name must have at least 1 character'),
+  email: z.email().min(1, 'Must have at least 1 character'),
+  subject: z.string(),
+  message: z
+    .string()
+    .min(100, 'Message Must have at least 100 characters')
+    .max(1000, 'Message cannot exceed 1000 character'),
 });

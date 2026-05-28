@@ -203,3 +203,17 @@ export const UTILITY_PAGES_QUERY = defineQuery(`*[_type == 'utilityPage'
   && defined(slug.current)]{
     "slug": slug.current
   }`);
+
+export const MAP_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
+  "lat": contactInfo.latitude,
+  "long": contactInfo.longitude,
+  contactInfo{
+    address1,
+    city,
+    country,
+    email,
+    phone,
+    state,
+    zip
+  }
+}`);

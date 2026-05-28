@@ -92,3 +92,18 @@ export const EditorCardSkeleton = () => {
     </div>
   );
 };
+
+export const MembershipCardSkeleton = () => {
+  return (
+    <div className="space-y-2">
+      <Skeleton className="w-full h-50" />
+
+      <Skeleton className="w-full h-3" />
+      <Skeleton className="w-full h-3" />
+      <Skeleton className="w-full h-3" />
+      <Skeleton className="w-full h-3" />
+      <Skeleton className="w-full h-3" />
+      <Skeleton className="w-full h-3" />
+    </div>
+  );
+};

@@ -25,6 +25,7 @@ const Footer = async () => {
       className={clsx(
         'pt-12 md:pt-20 bg-brand-neutral-900 text-brand-neutral-50 px-8 md:px-12 grid gap-y-4 md:gap-x-12 md:grid-cols-[1fr_3fr] pb-8 md:pb-12',
       )}
+      role="footer"
     >
       <div className="flex flex-col gap-y-3">
         {logoAlt && logoUrl ? (
