@@ -13,7 +13,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
-import { FaArrowLeftLong } from 'react-icons/fa6';
 
 const ArticleDetailsPage = async ({
   params,
