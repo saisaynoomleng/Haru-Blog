@@ -6,7 +6,13 @@ import { Loading } from './Loading';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 
-const SubmitButton = ({ className }: { className?: string }) => {
+const SubmitButton = ({
+  className,
+  label,
+}: {
+  className?: string;
+  label?: string;
+}) => {
   const { pending } = useFormStatus();
 
   return (
@@ -18,7 +24,7 @@ const SubmitButton = ({ className }: { className?: string }) => {
         ),
       )}
     >
-      {pending ? <Loading /> : <span>Submit</span>}
+      {pending ? <Loading /> : <span>{label ? `${label}` : `Submit`}</span>}
     </Button>
   );
 };

@@ -34,15 +34,16 @@ const MemberAccessFeature = ({
 
   return (
     <div className={twMerge(clsx('grid md:grid-cols-2 md:gap-x-5', className))}>
-      <PaperTorn className="overflow-hidden p-5">
-        <Image
-          src={urlFor(current.image.imageUrl).format('webp').url()}
-          alt={current.image.imageAlt}
-          width={400}
-          height={600}
-          sizes="(max-width: 200px)"
-          className="object-cover rounded-sm saturate-0  max-h-125"
-        />
+      <PaperTorn>
+        <div className="relative aspect-square">
+          <Image
+            src={urlFor(current.image.imageUrl).format('webp').url()}
+            alt={current.image.imageAlt}
+            fill
+            sizes="(max-width: 400px) 100vw, 88vw"
+            className="object-cover rounded-sm saturate-0  max-h-125"
+          />
+        </div>
       </PaperTorn>
 
       <div className={clsx('flex flex-col gap-y-3')}>

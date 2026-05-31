@@ -15,6 +15,7 @@ export const env = createEnv({
       .startsWith('pk'),
     NEXT_PUBLIC_URL: z.url(),
     NEXT_PUBLIC_MAPBOX_TOKEN: z.string().startsWith('pk'),
+    NEXT_PUBLIC_CLERK_SIGN_UP_URL: z.string(),
   },
   runtimeEnv: {
     NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
@@ -23,5 +24,6 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
     NEXT_PUBLIC_MAPBOX_TOKEN: process.env.NEXT_PUBLIC_MAPBOX_TOKEN,
+    NEXT_PUBLIC_CLERK_SIGN_UP_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_UP_URL,
   },
 });

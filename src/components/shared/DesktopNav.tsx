@@ -57,7 +57,7 @@ const DesktopNav = ({
         }
       })}
 
-      {userId && <UserButton />}
+      {userId ? <UserButton /> : <Link href="/sign-in">Sign Up</Link>}
 
       <div className="flex items-center">
         <button
