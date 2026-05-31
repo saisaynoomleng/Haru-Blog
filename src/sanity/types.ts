@@ -15,13 +15,6 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: src/sanity/extract.json
-export type SanityImageAssetReference = {
-  _ref: string;
-  _type: 'reference';
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-};
-
 export type Review = {
   _id: string;
   _type: 'review';
@@ -33,30 +26,7 @@ export type Review = {
   role?: string;
   rating?: number;
   body?: string;
-  image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: 'image';
-  };
   reviewedAt?: string;
-};
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop';
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot';
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
 };
 
 export type SiteSetting = {
@@ -128,6 +98,13 @@ export type SiteSetting = {
     email?: string;
     phone?: string;
   };
+};
+
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: 'reference';
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
 };
 
 export type ImageWithAlt = {
@@ -323,6 +300,22 @@ export type Faq = {
   body?: string;
 };
 
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop';
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot';
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
 export type MediaTag = {
   _id: string;
   _type: 'media.tag';
@@ -430,11 +423,9 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
-  | SanityImageAssetReference
   | Review
-  | SanityImageCrop
-  | SanityImageHotspot
   | SiteSetting
+  | SanityImageAssetReference
   | ImageWithAlt
   | UtilityPage
   | Seo
@@ -451,6 +442,8 @@ export type AllSanitySchemaTypes =
   | Member
   | SocialLink
   | Faq
+  | SanityImageCrop
+  | SanityImageHotspot
   | MediaTag
   | SanityImagePaletteSwatch
   | SanityImagePalette
@@ -686,15 +679,6 @@ export type BLOGS_QUERY_RESULT = Array<
       excerpt: null;
     }
   | {
-      name: null;
-      slug: null;
-      imageUrl: string | null;
-      imageAlt: null;
-      author: null;
-      category: null;
-      excerpt: null;
-    }
-  | {
       name: string | null;
       slug: string | null;
       imageUrl: string | null;
@@ -779,6 +763,19 @@ export type MAP_QUERY_RESULT = {
   } | null;
 } | null;
 
+// Source: src/sanity/lib/queries.ts
+// Variable: REVIEWS_QUERY
+// Query: *[_type == 'review']|order(reviewedAt desc){  title,  username,  role,  rating,  body,  reviewedAt,  _id}
+export type REVIEWS_QUERY_RESULT = Array<{
+  title: string | null;
+  username: string | null;
+  role: string | null;
+  rating: number | null;
+  body: string | null;
+  reviewedAt: string | null;
+  _id: string;
+}>;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -799,5 +796,6 @@ declare module '@sanity/client' {
     '*[_type == \'utilityPage\'\n && slug.current == $slug][0]{\n  name,\n  body,\n  "seo": {\n    "title": coalesce(seo.metaTitle, ""),\n    "description": coalesce(seo.metaDescription),\n    "noIndex" : seo.noIndex == true\n  }\n }': UTILITY_PAGE_QUERY_RESULT;
     '*[_type == \'utilityPage\'\n  && defined(slug.current)]{\n    "slug": slug.current\n  }': UTILITY_PAGES_QUERY_RESULT;
     '*[_type == \'siteSetting\'][0]{\n  "lat": contactInfo.latitude,\n  "long": contactInfo.longitude,\n  contactInfo{\n    address1,\n    city,\n    country,\n    email,\n    phone,\n    state,\n    zip\n  }\n}': MAP_QUERY_RESULT;
+    "*[_type == 'review']\n|order(reviewedAt desc){\n  title,\n  username,\n  role,\n  rating,\n  body,\n  reviewedAt,\n  _id\n}": REVIEWS_QUERY_RESULT;
   }
 }

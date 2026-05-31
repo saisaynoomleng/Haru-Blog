@@ -217,3 +217,14 @@ export const MAP_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
     zip
   }
 }`);
+
+export const REVIEWS_QUERY = defineQuery(`*[_type == 'review']
+|order(reviewedAt desc){
+  title,
+  username,
+  role,
+  rating,
+  body,
+  reviewedAt,
+  _id
+}`);

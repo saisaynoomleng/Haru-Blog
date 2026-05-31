@@ -4,7 +4,7 @@ import { FOOTER_QUERY } from '@/sanity/lib/queries';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import { socialIcons } from '@/lib/dataLayer';
+import { socialIcons } from '@/lib/dataAccessLayer';
 
 const Footer = async () => {
   const { data: footer } = await sanityFetch({ query: FOOTER_QUERY });
