@@ -1,7 +1,7 @@
 'use client';
 
 import { handleContactForm } from '@/actions/handleContactForm';
-import { InitialFormState } from '@/lib/dataLayer';
+import { InitialFormState } from '@/lib/dataAccessLayer';
 import Form from 'next/form';
 import { useActionState, useEffect, useRef, useState } from 'react';
 import { Input } from '../ui/input';

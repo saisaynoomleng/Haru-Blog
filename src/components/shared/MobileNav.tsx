@@ -1,6 +1,6 @@
 'use client';
 
-import { socialIcons } from '@/lib/dataLayer';
+import { socialIcons } from '@/lib/dataAccessLayer';
 import { HEADER_QUERY_RESULT } from '@/sanity/types';
 import { useAuth, UserButton } from '@clerk/nextjs';
 import clsx from 'clsx';

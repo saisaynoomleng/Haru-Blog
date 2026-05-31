@@ -39,11 +39,6 @@ export const reviewType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-    }),
-    defineField({
       name: 'reviewedAt',
       title: 'Review Date',
       type: 'date',
@@ -54,10 +49,9 @@ export const reviewType = defineType({
     select: {
       title: 'title',
       reviewedAt: 'reviewedAt',
-      image: 'image',
       rating: 'rating',
     },
-    prepare({ title, reviewedAt, image, rating }) {
+    prepare({ title, reviewedAt, rating }) {
       const titleFormatted = title
         ? formatTitle(title)
         : 'Review Title not provided';
@@ -68,7 +62,7 @@ export const reviewType = defineType({
       return {
         title: titleFormatted,
         subtitle: `Rating: ${rating} | Date: ${date}`,
-        media: image || TiMessages,
+        media: TiMessages,
       };
     },
   },

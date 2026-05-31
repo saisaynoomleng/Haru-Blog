@@ -3,7 +3,7 @@ import BlogCard from '@/components/shared/BlogCard';
 import Bounded from '@/components/shared/Bounded';
 import PageTitle from '@/components/shared/PageTitle';
 import { BlogCardSkeleton } from '@/components/shared/Skeletons';
-import { socialIcons } from '@/lib/dataLayer';
+import { socialIcons } from '@/lib/dataAccessLayer';
 import { urlFor } from '@/sanity/lib/image';
 import { sanityFetch } from '@/sanity/lib/live';
 import { AUTHOR_QUERY } from '@/sanity/lib/queries';

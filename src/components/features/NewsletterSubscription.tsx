@@ -1,7 +1,7 @@
 'use client';
 
 import { handleNewsletter } from '@/actions/handleNewsletter';
-import { InitialFormState } from '@/lib/dataLayer';
+import { InitialFormState } from '@/lib/dataAccessLayer';
 import { useActionState, useEffect } from 'react';
 import Form from 'next/form';
 import { Input } from '../ui/input';

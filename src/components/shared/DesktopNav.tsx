@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { twMerge } from 'tailwind-merge';
 import { RiCloseFill } from 'react-icons/ri';
-import { socialIcons } from '@/lib/dataLayer';
+import { socialIcons } from '@/lib/dataAccessLayer';
 
 type DesktopNavProps = {
   navigation: NonNullable<HEADER_QUERY_RESULT>['navigation'];

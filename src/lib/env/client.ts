@@ -1,5 +1,6 @@
 import { createEnv } from '@t3-oss/env-nextjs';
 import * as z from 'zod';
+import 'dotenv/config';
 
 export const env = createEnv({
   emptyStringAsUndefined: true,
@@ -15,7 +16,7 @@ export const env = createEnv({
     NEXT_PUBLIC_URL: z.url(),
     NEXT_PUBLIC_MAPBOX_TOKEN: z.string().startsWith('pk'),
   },
-  experimental__runtimeEnv: {
+  runtimeEnv: {
     NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
     NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:

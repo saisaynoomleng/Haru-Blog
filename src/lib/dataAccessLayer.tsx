@@ -22,3 +22,12 @@ export const InitialFormState = {
   message: '',
   field: '',
 };
+
+export const mockReviewCard = {
+  title: `Clean modern perspective`,
+  username: `anna_luxstyle`,
+  role: `Brand Strategist`,
+  rating: 5,
+  body: `The content feels modern, clean, and aligned with current fashion direction.`,
+  reviewedAt: '2026-05-10',
+};
