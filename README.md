@@ -46,6 +46,7 @@
 
 - User can sign up using email & OAuth(Google, GitHub, Apple)
 - User can subscribe to newsletter and get future updates via email
+- User can leave a review for the website
 
 ### Admin
 

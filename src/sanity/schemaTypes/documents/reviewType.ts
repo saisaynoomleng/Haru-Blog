@@ -44,6 +44,21 @@ export const reviewType = defineType({
       type: 'date',
       initialValue: new Date().toISOString(),
     }),
+    defineField({
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'New', value: 'new' },
+          { title: 'Spam', value: 'spam' },
+          { title: 'Reviewed', value: 'reviewed' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'new',
+      validation: (rule) => rule.required(),
+    }),
   ],
   preview: {
     select: {
