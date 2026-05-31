@@ -6,6 +6,7 @@ export const reviews = [
     rating: 5,
     body: 'I don’t usually leave reviews, but this blog is genuinely useful. I reference it often when working with clients.',
     reviewedAt: '2021-03-12',
+    status: 'new',
   },
   {
     username: 'alex.streetwear',
@@ -14,6 +15,7 @@ export const reviews = [
     rating: 4,
     body: 'Straightforward and easy to understand. Good breakdown of trends without overcomplicating things.',
     reviewedAt: '2021-08-05',
+    status: 'new',
   },
   {
     username: 'emilyk',
@@ -22,6 +24,7 @@ export const reviews = [
     rating: 5,
     body: 'The writing style feels very editorial. It reminds me of reading digital magazines.',
     reviewedAt: '2021-11-22',
+    status: 'new',
   },
   {
     username: 'joshua_lee',
@@ -30,6 +33,7 @@ export const reviews = [
     rating: 4,
     body: 'I’m still learning fashion, and this makes runway and trend concepts easier to understand.',
     reviewedAt: '2022-02-14',
+    status: 'new',
   },
   {
     username: 'thriftqueen88',
@@ -38,6 +42,7 @@ export const reviews = [
     rating: 5,
     body: 'It doesn’t just show clothes, it explains the culture behind them, which is rare.',
     reviewedAt: '2022-06-30',
+    status: 'new',
   },
   {
     username: 'daniel_h',
@@ -46,6 +51,7 @@ export const reviews = [
     rating: 5,
     body: 'I’ve noticed trends mentioned here appearing in retail a few months later.',
     reviewedAt: '2022-09-18',
+    status: 'new',
   },
   {
     username: 'leo_valentine',
@@ -54,11 +60,13 @@ export const reviews = [
     rating: 5,
     body: 'Clean writing style, feels professional and not like random blog content.',
     reviewedAt: '2022-12-09',
+    status: 'new',
   },
   {
     username: 'sara_photo',
     title: 'Great street style connection',
     role: 'Photographer',
+    status: 'new',
     rating: 4,
     body: 'I like how it connects runway fashion with real street culture.',
     reviewedAt: '2023-03-11',
@@ -67,6 +75,7 @@ export const reviews = [
     username: 'matt_branding',
     title: 'Good for inspiration',
     role: 'Fashion Entrepreneur',
+    status: 'new',
     rating: 5,
     body: 'I use ideas from here for branding and creative direction.',
     reviewedAt: '2023-05-27',
@@ -74,6 +83,7 @@ export const reviews = [
   {
     username: 'trendguy',
     title: 'Deep but readable',
+    status: 'new',
     role: 'Trend Analyst',
     rating: 5,
     body: 'Explains fashion trends in a way that’s detailed but still easy to follow.',
@@ -82,6 +92,7 @@ export const reviews = [
   {
     username: 'nina_m',
     title: 'Modern aesthetic',
+    status: 'new',
     role: 'Content Creator',
     rating: 5,
     body: 'Everything feels visually clean and well thought out.',
@@ -89,6 +100,7 @@ export const reviews = [
   },
   {
     username: 'andrea_design',
+    status: 'new',
     title: 'Useful for design ideas',
     role: 'Fashion Designer',
     rating: 5,
@@ -98,6 +110,7 @@ export const reviews = [
   {
     username: 'kyle_s',
     title: 'Practical styling tips',
+    status: 'new',
     role: 'Personal Stylist',
     rating: 5,
     body: 'Some of the styling advice here actually works in real client sessions.',
@@ -106,6 +119,7 @@ export const reviews = [
   {
     username: 'fashion_mark',
     title: 'Feels trustworthy',
+    status: 'new',
     role: 'Marketing Manager',
     rating: 5,
     body: 'Compared to other blogs, this feels more consistent and reliable.',
@@ -114,6 +128,7 @@ export const reviews = [
   {
     username: 'lisa_moodboard',
     title: 'Good inspiration source',
+    status: 'new',
     role: 'Wardrobe Consultant',
     rating: 4,
     body: 'I often use this when building client mood boards.',
@@ -122,6 +137,7 @@ export const reviews = [
   {
     username: 'johnny_review',
     title: 'Goes beyond trends',
+    status: 'new',
     role: 'Fashion Journalist',
     rating: 5,
     body: 'It explains the reasoning behind fashion movements, not just the trends.',
@@ -130,6 +146,7 @@ export const reviews = [
   {
     username: 'cindy_lux',
     title: 'Good luxury insights',
+    status: 'new',
     role: 'Retail Manager',
     rating: 5,
     body: 'Feels aligned with how luxury fashion is evolving right now.',
@@ -139,6 +156,7 @@ export const reviews = [
     username: 'eva_mag',
     title: 'Editorial quality',
     role: 'Magazine Contributor',
+    status: 'new',
     rating: 5,
     body: 'Some articles honestly feel like editorial magazine content.',
     reviewedAt: '2025-08-12',
@@ -147,6 +165,7 @@ export const reviews = [
     username: 'david_consult',
     title: 'I keep coming back',
     role: 'Fashion Consultant',
+    status: 'new',
     rating: 5,
     body: 'I regularly revisit this site when I need reference material.',
     reviewedAt: '2025-11-30',
@@ -155,6 +174,7 @@ export const reviews = [
     username: 'anna_luxstyle',
     title: 'Clean modern perspective',
     role: 'Brand Strategist',
+    status: 'new',
     rating: 5,
     body: 'The content feels modern, clean, and aligned with current fashion direction.',
     reviewedAt: '2026-05-10',

@@ -1,7 +1,9 @@
 import { JSX } from 'react';
 import {
+  BsApple,
   BsFacebook,
   BsGithub,
+  BsGoogle,
   BsInstagram,
   BsLinkedin,
   BsTwitterX,
@@ -31,3 +33,9 @@ export const mockReviewCard = {
   body: `The content feels modern, clean, and aligned with current fashion direction.`,
   reviewedAt: '2026-05-10',
 };
+
+export const OAuthLogins = [
+  { name: 'oauth_google', label: <BsGoogle /> },
+  { name: 'oauth_github', label: <BsGithub /> },
+  { name: 'oauth_apple', label: <BsApple /> },
+];

@@ -21,7 +21,7 @@ export const client = createClient({
 
 async function seedReviews() {
   for (const review of reviews) {
-    await client.create({
+    await client.createIfNotExists({
       _type: 'review',
       _id: `review-${review.username}`,
       ...review,
