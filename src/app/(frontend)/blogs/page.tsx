@@ -48,8 +48,8 @@ const ArticlesPage = async ({
               href: `/blogs/${featuredBlog.slug}`,
               label: 'Read article',
             }}
-            title="Meet the Trendsetters Behind our Lifestyle Online Magazine"
-            description="Our fashion lifestyle blog is your go-to destination for the latest trends, style tips, and inspiration. Curated by a team of passionate editors with diverse backgrounds in fashion, each post reflects a unique blend of expertise and creativity."
+            title={featuredBlog.name as string}
+            description={featuredBlog.excerpt as string}
             category={featuredBlog.category as string}
           />
         </Suspense>
