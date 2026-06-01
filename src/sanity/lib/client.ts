@@ -19,16 +19,16 @@ export const client = createClient({
   useCdn: false,
 });
 
-async function seedReviews() {
-  for (const review of reviews) {
-    await client.createIfNotExists({
-      _type: 'review',
-      _id: `review-${review.username}`,
-      ...review,
-    });
-    console.log(`Seeding review data for ${review.username}`);
-  }
-  console.log(`Done seeding reviews`);
-}
+// async function seedReviews() {
+//   for (const review of reviews) {
+//     await client.createIfNotExists({
+//       _type: 'review',
+//       _id: `review-${review.username}`,
+//       ...review,
+//     });
+//     console.log(`Seeding review data for ${review.username}`);
+//   }
+//   console.log(`Done seeding reviews`);
+// }
 
-seedReviews().catch(console.error);
+// seedReviews().catch(console.error);
