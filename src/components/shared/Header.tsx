@@ -6,9 +6,25 @@ import { urlFor } from '@/sanity/lib/image';
 import Link from 'next/link';
 import MobileNav from './MobileNav';
 import { HEADER_QUERY_RESULT } from '@/sanity/types';
+import { auth } from '@clerk/nextjs/server';
+import db from '@/db';
+import { UserTable } from '@/db/schema/users.schema';
+import { eq } from 'drizzle-orm';
 
 const Header = async () => {
   const { data: header } = await sanityFetch({ query: HEADER_QUERY });
+  const { userId } = await auth();
+
+  const user =
+    userId &&
+    (await db.query.UserTable.findFirst({
+      where: eq(UserTable.clerkUserId, userId),
+      columns: {
+        imageUrl: true,
+      },
+    }));
+
+  const userImage = user && user.imageUrl;
 
   if (!header) return null;
 
@@ -36,6 +52,7 @@ const Header = async () => {
           header.socialLinks as NonNullable<HEADER_QUERY_RESULT>['socialLinks']
         }
         className="hidden md:flex"
+        userImage={userImage || ''}
       />
 
       {/* mobile-nav */}
@@ -47,6 +64,7 @@ const Header = async () => {
           header.socialLinks as NonNullable<HEADER_QUERY_RESULT>['socialLinks']
         }
         className="flex md:hidden"
+        userImage={userImage || ''}
       />
     </header>
   );

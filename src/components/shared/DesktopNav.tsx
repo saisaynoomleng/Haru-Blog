@@ -1,7 +1,7 @@
 'use client';
 
 import { HEADER_QUERY_RESULT } from '@/sanity/types';
-import { useAuth, UserButton } from '@clerk/nextjs';
+import { useAuth } from '@clerk/nextjs';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -10,21 +10,24 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { twMerge } from 'tailwind-merge';
 import { RiCloseFill } from 'react-icons/ri';
 import { socialIcons } from '@/lib/dataAccessLayer';
+import Image from 'next/image';
 
 type DesktopNavProps = {
   navigation: NonNullable<HEADER_QUERY_RESULT>['navigation'];
   socialLinks: NonNullable<HEADER_QUERY_RESULT>['socialLinks'];
   className?: string;
+  userImage?: string;
 };
 
 const DesktopNav = ({
   navigation,
   socialLinks,
   className,
+  userImage,
 }: DesktopNavProps) => {
   const pathname = usePathname();
   const [navOpen, setNavOpen] = useState<boolean>(false);
-  const { userId } = useAuth();
+  const { isSignedIn } = useAuth();
   const dropdown = navigation?.find((item) => item._type === 'navDropdown');
 
   useEffect(() => {
@@ -57,7 +60,23 @@ const DesktopNav = ({
         }
       })}
 
-      {userId ? <UserButton /> : <Link href="/sign-in">Sign Up</Link>}
+      {isSignedIn ? (
+        <Link
+          href="/user"
+          className="overflow-hidden relative aspect-square w-10 h-10"
+        >
+          <Image
+            src={userImage || 'https://placehold.co/100'}
+            alt=""
+            fill
+            loading="lazy"
+            className="max-w-10 rounded-full"
+            sizes="(max-width:40px) 100vw, 66vw"
+          />
+        </Link>
+      ) : (
+        <Link href="/sign-in">Sign In</Link>
+      )}
 
       <div className="flex items-center">
         <button

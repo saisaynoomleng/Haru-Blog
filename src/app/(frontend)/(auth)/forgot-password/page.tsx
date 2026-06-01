@@ -152,6 +152,7 @@ const ForgotPasswordPage = () => {
         {signIn.status === 'needs_new_password' && (
           <form onSubmit={handleNewPassword} className="space-y-6">
             <PageTitle label="Enter New password" />
+
             <div className="space-y-2">
               <label htmlFor="password" className="form-label">
                 Enter New Password
