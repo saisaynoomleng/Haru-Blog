@@ -127,6 +127,11 @@ const SignUpPage = () => {
                 id="code"
                 onChange={(e) => setCode(e.target.value)}
               />
+              {errors.fields.code && (
+                <p className="form-error-message">
+                  {errors.fields.code.message}
+                </p>
+              )}
               <button
                 type="button"
                 className="ml-auto block text-brand-primary-600 cursor-pointer hover:underline"
@@ -158,6 +163,12 @@ const SignUpPage = () => {
             ))}
           </div>
 
+          <div className="flex items-center gap-x-4">
+            <div className="divider"></div>
+            <p>Or</p>
+            <div className="divider"></div>
+          </div>
+
           <form onSubmit={handleSignUp} className="flex flex-col gap-y-4">
             <div className="space-y-1">
               <label htmlFor="firstName" className="form-label">
@@ -170,6 +181,11 @@ const SignUpPage = () => {
                 autoComplete="given-name"
                 required
               />
+              {errors.fields.firstName && (
+                <p className="form-error-message">
+                  {errors.fields.firstName.message}
+                </p>
+              )}
             </div>
 
             <div className="space-y-1">
@@ -183,6 +199,11 @@ const SignUpPage = () => {
                 autoComplete="family-name"
                 required
               />
+              {errors.fields.lastName && (
+                <p className="form-error-message">
+                  {errors.fields.lastName.message}
+                </p>
+              )}
             </div>
 
             <div className="space-y-1">
@@ -196,6 +217,11 @@ const SignUpPage = () => {
                 autoComplete="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
+              {errors.fields.emailAddress && (
+                <p className="form-error-message">
+                  {errors.fields.emailAddress.message}
+                </p>
+              )}
             </div>
 
             <div className="space-y-1 relative">
