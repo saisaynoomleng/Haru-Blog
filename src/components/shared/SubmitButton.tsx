@@ -24,7 +24,13 @@ const SubmitButton = ({
         ),
       )}
     >
-      {pending ? <Loading /> : <span>{label ? `${label}` : `Submit`}</span>}
+      {pending ? (
+        <span>
+          <Loading />
+        </span>
+      ) : (
+        <span>{label ? `${label}` : `Submit`}</span>
+      )}
     </Button>
   );
 };

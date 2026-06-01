@@ -37,3 +37,20 @@ export const ReviewFormSchema = z.object({
     .min(20, 'Review text must have at least 20 characters')
     .max(1000, 'Review text cannot exceed 1000 characters'),
 });
+
+export const UserInfoFormSchema = z.object({
+  firstName: z.string().min(1, 'First name must have at least one character'),
+  lastName: z.string().min(1, 'Last name must have at least one character'),
+  email: z.email().min(1, `Must be a valid email address`),
+});
+
+export const UserPhotoFormSchema = z.object({
+  imageUrl: z.url().min(1, 'Invalid URL'),
+});
+
+export const UserPasswordFormSchema = z.object({
+  newPassword: z.string().min(8, 'Password must contain at least 8 characters'),
+  confirmNewPassword: z
+    .string()
+    .min(8, 'Password must contain at least 8 characters'),
+});

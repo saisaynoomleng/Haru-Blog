@@ -46,7 +46,7 @@ const MobileNav = ({
           className="overflow-hidden relative aspect-square w-10 h-10"
         >
           <Image
-            src={userImage || 'https://placehold.co/400'}
+            src={userImage || 'https://placehold.co/400.png'}
             alt=""
             fill
             loading="lazy"

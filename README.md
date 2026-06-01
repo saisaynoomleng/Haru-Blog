@@ -50,6 +50,8 @@
 - User can subscribe to newsletter and get future updates via email
 - User can leave a review for the website
 - User can contact the website directly via contact us form
+- User can update first name, last name, email in the profile
+- User can update Profil photo in the profile
 
 ### Admin
 

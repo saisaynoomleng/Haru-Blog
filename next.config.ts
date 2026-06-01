@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'cdn.sanity.io' },
       { protocol: 'https', hostname: 'placehold.co' },
       { protocol: 'https', hostname: 'img.clerk.com' },
+      {
+        protocol: 'https',
+        hostname: 'ogqxbog6vhc1huym.public.blob.vercel-storage.com',
+      },
     ],
   },
 };

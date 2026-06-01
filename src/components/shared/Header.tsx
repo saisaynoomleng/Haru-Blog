@@ -24,7 +24,7 @@ const Header = async () => {
       },
     }));
 
-  const userImage = user && user.imageUrl;
+  const userImage = (user && user.imageUrl) || 'https://placehold.co/100.png';
 
   if (!header) return null;
 
