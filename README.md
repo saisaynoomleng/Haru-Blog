@@ -16,6 +16,7 @@
 - 5/26/2026 => Development
 - 5/27/2026 => Development
 - 5/31/2026 => Development
+- 6/1/2026 => Development
 
 ---
 
@@ -45,6 +46,7 @@
 ### User
 
 - User can sign up using email & OAuth(Google, GitHub, Apple)
+- User can reset password using email
 - User can subscribe to newsletter and get future updates via email
 - User can leave a review for the website
 - User can contact the website directly via contact us form

@@ -60,7 +60,7 @@ const SignInPage = () => {
 
   return (
     <Bounded as="main" className="grid md:grid-cols-2 md:gap-x-12">
-      <Bounded padding="none">
+      <Bounded padding="none" className="max-md:hidden">
         <div className="overflow-hidden rounded-lg">
           <Image
             src="/signin.jpg"
