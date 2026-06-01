@@ -94,7 +94,7 @@
     @apply scroll-smooth;
   }
   body {
-    @apply font-serif text-fs-400 leading-normal tracking-normal overflow-x-hidden bg-brand-neutral-50 text-shadow-brand-neutral-950 dark:bg-brand-neutral-950;
+    @apply font-serif text-fs-400 leading-normal tracking-normal overflow-x-hidden;
   }
   h1,
   h2,

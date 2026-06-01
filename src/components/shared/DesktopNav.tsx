@@ -66,12 +66,12 @@ const DesktopNav = ({
           className="overflow-hidden relative aspect-square w-10 h-10"
         >
           <Image
-            src={userImage || 'https://placehold.co/100'}
+            src={userImage || 'https://placehold.co/100.png'}
             alt=""
             fill
             loading="lazy"
             className="max-w-10 rounded-full"
-            sizes="(max-width:40px) 100vw, 66vw"
+            sizes="(max-width:40px) 10vw, 6vw"
           />
         </Link>
       ) : (
