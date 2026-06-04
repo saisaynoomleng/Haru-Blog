@@ -27,6 +27,7 @@ export type Review = {
   rating?: number;
   body?: string;
   reviewedAt?: string;
+  status?: 'new' | 'spam' | 'reviewed';
 };
 
 export type SiteSetting = {
@@ -237,6 +238,7 @@ export type Membership = {
   slug?: Slug;
   image?: ImageWithAlt;
   pricePerMonth?: number;
+  stripePriceId?: string;
   desc?: string;
   features?: Array<string>;
   isFeatured?: boolean;
@@ -776,6 +778,21 @@ export type REVIEWS_QUERY_RESULT = Array<{
   _id: string;
 }>;
 
+// Source: src/sanity/lib/queries.ts
+// Variable: MEMBERSHIP_QUERY
+// Query: *[_type == 'membership' && slug.current == $slug][0]{  name,  pricePerMonth,  desc,  features,  "imageUrl": image.asset->url,  "imageAlt": image.alt,  "slug": slug.current,  _id,  stripePriceId, }
+export type MEMBERSHIP_QUERY_RESULT = {
+  name: string | null;
+  pricePerMonth: number | null;
+  desc: string | null;
+  features: Array<string> | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  slug: string | null;
+  _id: string;
+  stripePriceId: string | null;
+} | null;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -797,5 +814,6 @@ declare module '@sanity/client' {
     '*[_type == \'utilityPage\'\n  && defined(slug.current)]{\n    "slug": slug.current\n  }': UTILITY_PAGES_QUERY_RESULT;
     '*[_type == \'siteSetting\'][0]{\n  "lat": contactInfo.latitude,\n  "long": contactInfo.longitude,\n  contactInfo{\n    address1,\n    city,\n    country,\n    email,\n    phone,\n    state,\n    zip\n  }\n}': MAP_QUERY_RESULT;
     "*[_type == 'review']\n|order(reviewedAt desc){\n  title,\n  username,\n  role,\n  rating,\n  body,\n  reviewedAt,\n  _id\n}": REVIEWS_QUERY_RESULT;
+    '*[_type == \'membership\'\n && slug.current == $slug][0]{\n  name,\n  pricePerMonth,\n  desc,\n  features,\n  "imageUrl": image.asset->url,\n  "imageAlt": image.alt,\n  "slug": slug.current,\n  _id,\n  stripePriceId,\n }': MEMBERSHIP_QUERY_RESULT;
   }
 }

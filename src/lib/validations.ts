@@ -54,3 +54,11 @@ export const UserPasswordFormSchema = z.object({
     .string()
     .min(8, 'Password must contain at least 8 characters'),
 });
+
+export const SubscriptionFormSchema = z.object({
+  _id: z.string().min(1, 'Sanity ID must have at least 1 character'),
+  name: z.string().min(1, 'Membership name must have at least 1 character'),
+  stripePriceId: z
+    .string()
+    .min(1, 'Stripe price id must have at least 1 character'),
+});

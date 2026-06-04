@@ -41,6 +41,12 @@ export const membershipType = defineType({
       },
     }),
     defineField({
+      name: 'stripePriceId',
+      title: 'Stripe Price ID',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'desc',
       title: 'Membership Description',
       type: 'text',
