@@ -228,3 +228,16 @@ export const REVIEWS_QUERY = defineQuery(`*[_type == 'review']
   reviewedAt,
   _id
 }`);
+
+export const MEMBERSHIP_QUERY = defineQuery(`*[_type == 'membership'
+ && slug.current == $slug][0]{
+  name,
+  pricePerMonth,
+  desc,
+  features,
+  "imageUrl": image.asset->url,
+  "imageAlt": image.alt,
+  "slug": slug.current,
+  _id,
+  stripePriceId,
+ }`);

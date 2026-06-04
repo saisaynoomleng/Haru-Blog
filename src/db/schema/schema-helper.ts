@@ -22,8 +22,12 @@ export const ContactStatus = t.pgEnum('contactStatus', [
 ]);
 
 export const SubscriptionStatus = t.pgEnum('orderStatus', [
-  'pending',
-  'paid',
-  'cancelled',
-  'confirmed',
+  'active',
+  'incomplete',
+  'incomplete_expired',
+  'trialing',
+  'past_due',
+  'canceled',
+  'unpaid',
+  'paused',
 ]);

@@ -84,6 +84,10 @@ export const ProductCard = ({
         ))}
       </ul>
 
+      <p className="italic text-brand-error-700 font-semibold text-fs-300">
+        Must create a user before Subscribe
+      </p>
+
       <CallToAction href={`/memberships/${slug}`} label="Subscribe" />
     </div>
   );

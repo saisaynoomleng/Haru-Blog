@@ -31,7 +31,7 @@ export const SubscriptionsTable = t.pgTable(
     currentPeriodEnd: t
       .timestamp('current_period_end', { withTimezone: true })
       .notNull(),
-    status: SubscriptionStatus('status').notNull().default('pending'),
+    status: SubscriptionStatus('status').notNull().default('incomplete'),
     ...timestamp,
   },
   (table) => [
